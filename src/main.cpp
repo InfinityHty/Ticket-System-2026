@@ -101,7 +101,7 @@ int main() {
                 else {
                     size_t num = login.size();
                     for (int i = 0; i < num; i++) {
-                        if (login[i] == cur) {
+                        if (login[i].username == u) {
                             valid = false;
                             break;
                         }
@@ -157,8 +157,9 @@ int main() {
             if (!exist || !ac.ExistThisUser(tmp_username)) valid = false;
             else {
                 User query = ac.GetUser(tmp_username);
-                if (cur.privilege < query.privilege) valid = false;
+                if (cur.privilege < query.privilege || cur.privilege == query.privilege && c != u) valid = false;
                 else {
+                    //std::cerr << cur << '\n';
                     std::cout << timestamp << " " << query << '\n';
                 }
             }
@@ -195,13 +196,13 @@ int main() {
                 if (!ac.ExistThisUser(tmp_username)) valid = false;
                 else {
                     User old = ac.GetUser(tmp_username);
+                    if (p.empty()) p = old.password;
+                    if (n.empty()) n = old.name;
+                    if (m.empty()) m = old.mailAddr;
+                    if (g == -1) g = old.privilege;
                     if (cur.privilege < old.privilege || g >= cur.privilege) valid = false;
                     else {
                         ac.DeleteUser(old);
-                        if (p.empty()) p = old.password;
-                        if (n.empty()) n = old.name;
-                        if (m.empty()) m = old.mailAddr;
-                        if (g == -1) g = old.privilege;
                         User modify(u,p,n,m,g);
                         ac.AddUser(modify);
                         std::cout << timestamp << " " << modify << '\n';
