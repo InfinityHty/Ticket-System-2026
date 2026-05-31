@@ -5,91 +5,55 @@
 #ifndef TICKET_SYSTEM_2026_ACCOUNT_H
 #define TICKET_SYSTEM_2026_ACCOUNT_H
 #include "User.h"
-#include "bpt_Database.h"
+#include "BPT_Database.h"
+#include "Keys.h"
+#include "Order.h"
+#include "Tool_functions.h"
 #include<string>
 class Account {
 public:
     std::string index_file_name = "account_index.txt";
     std::string file_name = "account.txt";
-    struct Key {
-        char cont[20];
-        Key() {
-            for (int i = 0; i < 20; i++) cont[i] = '\0';
-        }
-        Key(const char *other) {
-            for (int i = 0; i < 20; i++) cont[i] = '\0';
-            for (int i = 0; i < 20; i++) cont[i] = other[i];
-        }
-        friend bool operator <(Key &a,Key &b) {
-            for (int i = 0; i < 20; i++) {
-                if (a.cont[i] < b.cont[i]) return true;
-                if (a.cont[i] > b.cont[i]) return false;
-            }
-            return false;
-        }
-        friend bool operator >(Key &a,Key &b) {
-            for (int i = 0; i < 20; i++) {
-                if (a.cont[i] > b.cont[i]) return true;
-                if (a.cont[i] < b.cont[i]) return false;
-            }
-            return false;
-        }
-        friend bool operator ==(Key &a,Key &b) {
-            for (int i = 0; i < 20; i++) {
-                if (a.cont[i] != b.cont[i]) return false;
-            }
-            return true;
-        }
-        friend bool operator <=(Key &a,Key &b) {
-            for (int i = 0; i < 20; i++) {
-                if (a.cont[i] < b.cont[i]) return true;
-                if (a.cont[i] > b.cont[i]) return false;
-            }
-            return true;
-        }
-        friend bool operator >=(Key &a,Key &b) {
-            for (int i = 0; i < 20; i++) {
-                if (a.cont[i] > b.cont[i]) return true;
-                if (a.cont[i] < b.cont[i]) return false;
-            }
-            return true;
-        }
-        friend bool operator !=(Key &a,Key &b) {
-            for (int i = 0; i < 20; i++) {
-                if (a.cont[i] != b.cont[i]) return true;
-            }
-            return false;
-        }
-        friend std::ostream& operator <<(std::ostream &os,Key &k){
-            os << k.cont;
-            return os;
-        }
-    };
-    // Key是定长为20位的字符串
-    Database<Key,User,50,50> db;
+    Database<Key20,User,50,50> account_db;// username->User所有信息
+    Database<Key20,Order> order_db;// username->这个user的所有订单
     void Init() {
-        db.Initialize(index_file_name,file_name);
+        account_db.Initialize(index_file_name,file_name);
+        order_db.Initialize("order_index.txt","order.txt");
     }
     void Close() {
-        db.Close();
+        account_db.Close();
+        order_db.Close();
+    }
+    void Clear() {
+        account_db.Clear();
+        order_db.Clear();
     }
     void Find(const char *username_) {
-        db.Find(Key(username_));
+        account_db.Find(Key20(username_));
     }
     bool HasAnyUser() {
-        return db.HasData();
+        return account_db.HasData();
     }
     bool ExistThisUser(const char *username_) {
-        return db.Exist(Key(username_));
+        return account_db.Exist(Key20(username_));
     }
-    User GetUser(Key username) {
-        return db.GetData(username);
+    User GetUser(const char *username_) {
+        return account_db.GetData(Key20(username_));
     }
     void AddUser(User &user) {
-        db.Insert(Key(user.username),user);
+        account_db.Insert(Key20(user.username),user);
     }
     void DeleteUser(User &user) {
-        db.Delete(Key(user.username),user);
+        account_db.Delete(Key20(user.username),user);
+    }
+    void AddUserOrder(Order &order) {
+        order_db.Insert(Key20(order.username),order);
+    }
+    void DeleteUserOrder(Order &order) {
+        order_db.Delete(Key20(order.username),order);
+    }
+    sjtu::vector<Order> GetAllUserOrders(const char *username_) {
+        return order_db.GetAllDatas(Key20(username_));
     }
 };
 #endif //TICKET_SYSTEM_2026_ACCOUNT_H

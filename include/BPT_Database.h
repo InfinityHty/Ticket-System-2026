@@ -6,7 +6,7 @@
 #define TICKET_SYSTEM_2026_BPT_DATABASE_H
 #include<fstream>
 #include<iostream>
-
+#include "vector.h"
 template<class T1,class T2,int id_block_size = 40,int block_size = 40>
 class Database {
 private:
@@ -351,6 +351,19 @@ public:
         index_file.close();
         file.close();
 
+    }
+    void Clear() {
+        index_file.close();
+        index_file.open(index_file_name,std::ios::out | std::ios::binary);
+        index_file.seekp(0,std::ios::beg);
+        root = sizeof(long long);
+        index_file.write(reinterpret_cast<char *>(&root),sizeof(long long));
+
+        file.close();
+        file.open(file_name,std::ios::out | std::ios::binary);
+        file.seekp(0,std::ios::beg);
+        seq = sizeof(long long);
+        file.write(reinterpret_cast<char *>(&seq),sizeof(long long));
     }
     void Insert(T1 index,T2 value) {
         bool exist = false;
@@ -751,7 +764,6 @@ public:
     }
     bool HasData() {
         // 数据库是否为空
-        index_file.flush();
         index_file.seekg(root);
         IdNode cur;
         if (!index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode))) {
@@ -762,8 +774,6 @@ public:
         else return true;
     }
     bool Exist(T1 index) {
-        index_file.flush();
-        file.clear();
         IdNode cur;
         index_file.seekg(root);
         if (!index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode))) {
@@ -840,6 +850,48 @@ public:
             file.read(reinterpret_cast<char *>(&tmp),sizeof(ContentNode));
         }
         return T2();
+        //if (!exist) std::cout << "null";
+        //std::cout << "\n";
+        // index_file.close();
+        // file.close();
+    }
+    sjtu::vector<T2> GetAllDatas(T1 index) {
+        sjtu::vector<T2> datas{};
+        IdNode cur;
+        index_file.seekg(root);
+        index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
+        index_file.clear();
+        int target;
+        while (true) {
+            target = cur.num;
+            for (int i = 0; i < cur.num; i++) {
+                if (index <= cur.list[i].index) {
+                    //std::cerr << cur.list[i].index << " " << cur.list[i].value << std::endl;
+                    target = i;
+                    break;
+                }
+            }
+            if (cur.leaf == true) break;
+            else {
+                index_file.seekg(cur.address[target]);
+                index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
+            }
+        }
+        ContentNode tmp;
+        file.seekg(cur.address[target]);
+        file.read(reinterpret_cast<char *>(&tmp),sizeof(ContentNode));
+        //bool exist = false;
+        while (tmp.cont[0].index <= index) {
+            for (int i = 0; i < tmp.body_size; i++) {
+                if (tmp.cont[i].index == index) {
+                    datas.push_back(tmp.cont[i].value);
+                }
+            }
+            if (tmp.nex == -1) break;
+            file.seekg(tmp.nex);
+            file.read(reinterpret_cast<char *>(&tmp),sizeof(ContentNode));
+        }
+        return datas;
         //if (!exist) std::cout << "null";
         //std::cout << "\n";
         // index_file.close();

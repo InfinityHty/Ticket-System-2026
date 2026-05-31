@@ -451,6 +451,7 @@
 [21378] query_ticket -d 07-07 -p cost -s 天津市 -t 湖南省吉首市
 [21383] login -u Ifrit -p 5ZUzHLt8OV
 [21384] query_ticket -p time -t 安徽省宁国市 -s 河南省驻马店市 -d 07-14
+
 [21391] refund_ticket -u Indra -n 16
 [21400] add_train -d 06-26|08-17 -o 8|4|8|3|3|10|4|9|6 -p 340|115|22|140|295|393|403|295|52|102 -n 11 -i Deathlessthroughout -x 17:45 -y P -t 242|196|175|173|217|135|253|261|76|244 -s 湖北省黄冈市|辽宁省沈阳市|广东省高要市|北京市|福建省长乐市|河北省安国市|浙江省余姚市|山东省莱芜市|山东省威海市|吉林省长春市|江西省南昌市 -m 73160
 [21402] buy_ticket -f 福建省建阳市 -q true -n 6043 -d 07-12 -i LeavesofGrass -u Steward -t 河南省偃师市

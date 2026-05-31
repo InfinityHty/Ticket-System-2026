@@ -3,7 +3,7 @@
 //
 #include<iostream>
 #include<string>
-#include "../include/bpt_Database.h"
+#include "../include/BPT_Database.h"
 int n;
 // 定长的字符数组类
 const int MAX_LEN = 64;
