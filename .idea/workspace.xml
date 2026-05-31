@@ -16,7 +16,9 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated />
+    <generated>
+      <config projectName="Ticket-System-2026" targetName="code" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -25,26 +27,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46bde112-6358-4957-9df9-9c0603264431" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/include/Keys.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/Order.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/Ticket.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/TicketManagement.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/Tool_functions.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/TrainSystem.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run-test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Account.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Account.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Convert_functions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Train.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Train.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/bpt_Database.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/BPT_Database.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/account.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/account_index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/account_index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bpt_storage_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/bpt_storage_test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main" beforeDir="false" afterPath="$PROJECT_DIR$/src/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcase/1867/2.in" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/1867/2.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcase/1867/6.in" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/1867/6.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcase/1867/my1.out" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/1867/my1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +38,14 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -216,17 +209,21 @@
   "keyToString": {
     "C/C++ File.bpt_storage_test.cpp (1).executor": "Run",
     "C/C++ File.bpt_storage_test.cpp.executor": "Run",
+    "C/C++ File.code.executor": "Run",
     "C/C++ File.main.cpp (1).executor": "Run",
     "C/C++ File.main.cpp.executor": "Run",
     "C/C++ File.oj_submit.cpp.executor": "Run",
+    "CMake Application.code.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.config.gen.js.executor": "Run",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\HTY\\AppData\\Roaming\\JetBrains\\CLion2025.2\\plugins\\Shell Script\\shellcheck.exe",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
@@ -241,30 +238,38 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SJTU\大一下学期\Data_Structure\Ticket-System-2026" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\SJTU\大一下学期\Data_Structure\Ticket-System-2026\src" />
     </key>
   </component>
-  <component name="RunManager" selected="C/C++ File.main.cpp (1)">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+  <component name="RunManager" selected="CMake Application.code">
+    <configuration default="true" type="BIBTEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify-bibtex>
+        <compiler />
+        <compiler-path />
+        <compiler-arguments />
+        <envs />
+        <main-file />
+        <aux-dir />
+        <latex-distribution>PROJECT_SDK</latex-distribution>
+      </texify-bibtex>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="code" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="code" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ticket-System-2026" RUN_TARGET_NAME="code">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="bpt_storage_test.cpp (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="bpt_storage_test.cpp" CONFIG_NAME="bpt_storage_test.cpp">
       <option name="sourceFile" value="src\bpt_storage_test.cpp" />
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="main.cpp (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="main.cpp" CONFIG_NAME="main.cpp">
-      <option name="sourceFile" value="src\main.cpp" />
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="main.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="main.cpp" CONFIG_NAME="main.cpp">
-      <option name="sourceFile" value="main.cpp" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
@@ -284,29 +289,6 @@
       </texify-external>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
-      <texify>
-        <compiler>PDFLATEX</compiler>
-        <compiler-path />
-        <pdf-viewer>none</pdf-viewer>
-        <require-focus>true</require-focus>
-        <viewer-command />
-        <compiler-arguments />
-        <envs />
-        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
-        <before-run-command />
-        <main-file />
-        <output-path>{projectDir}/out</output-path>
-        <auxil-path>{projectDir}/auxil</auxil-path>
-        <compile-twice>false</compile-twice>
-        <output-format>PDF</output-format>
-        <latex-distribution>TEXLIVE</latex-distribution>
-        <has-been-run>false</has-been-run>
-        <bib-run-config>[]</bib-run-config>
-        <makeindex-run-config>[]</makeindex-run-config>
-      </texify>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="MAKEINDEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
       <texify-makeindex>
         <program>MAKEINDEX</program>
@@ -316,16 +298,15 @@
       </texify-makeindex>
       <method v="2" />
     </configuration>
-    <configuration name="config.gen.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="config.gen.js" working-dir="$PROJECT_DIR$/testcase/1867">
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="C/C++ File.bpt_storage_test.cpp (1)" />
+      <item itemvalue="C/C++ File.oj_submit.cpp" />
+      <item itemvalue="CMake Application.code" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="C/C++ File.main.cpp (1)" />
-        <item itemvalue="Node.js.config.gen.js" />
         <item itemvalue="C/C++ File.bpt_storage_test.cpp (1)" />
         <item itemvalue="C/C++ File.oj_submit.cpp" />
-        <item itemvalue="C/C++ File.main.cpp" />
       </list>
     </recent_temporary>
   </component>
@@ -347,7 +328,9 @@
       <workItem from="1779690737822" duration="122000" />
       <workItem from="1779690889699" duration="3020000" />
       <workItem from="1779779397668" duration="17942000" />
-      <workItem from="1779865141154" duration="94400000" />
+      <workItem from="1779865141154" duration="95591000" />
+      <workItem from="1780214655140" duration="3000" />
+      <workItem from="1780214676741" duration="1476000" />
     </task>
     <servers />
   </component>
