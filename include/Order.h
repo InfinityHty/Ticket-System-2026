@@ -9,7 +9,7 @@
 #include<iostream>
 class Order {
 public:
-    char username[20];
+    char username[21];
     int timestamp;
     enum Status{success,pending,refunded};
     Status status;
@@ -17,7 +17,7 @@ public:
     int number;
     Order(){}
     Order(const char *username_,int timestamp_,Status status_,Ticket &ticket_,int num) {
-        for (int i = 0; i < 20; i++) username[i] = username_[i];
+        for (int i = 0; i <= 20; i++) username[i] = username_[i];
         timestamp = timestamp_;
         status = status_;
         ticket = ticket_;
@@ -31,21 +31,29 @@ public:
         << o.ticket.end << " " << o.ticket.date[1] << " "  << o.ticket.time[1] << " " << o.ticket.price << " " << o.number;
         return os;
     }
-    bool operator <(const Order &other) {
-        if (std::string(username) < other.username) return true;
-        if (std::string(username) > other.username) return false;
+    bool operator <(const Order &other) const {
         if (timestamp < other.timestamp) return true;
         return false;
     }
-    bool operator <=(const Order &other) {
-        if (std::string(username) < other.username) return true;
-        if (std::string(username) > other.username) return false;
+    bool operator <=(const Order &other) const {
         if (timestamp <= other.timestamp) return true;
         return false;
     }
-    bool operator ==(const Order &other) {
-        if (std::string(username) == other.username && timestamp == other.timestamp) return true;
+    bool operator >(const Order &other) const {
+        if (timestamp > other.timestamp) return true;
         return false;
+    }
+    bool operator >=(const Order &other) const {
+        if (timestamp >= other.timestamp) return true;
+        return false;
+    }
+    bool operator ==(const Order &other) const {
+        if (timestamp == other.timestamp) return true;
+        return false;
+    }
+    bool operator !=(const Order &other) const {
+        if (timestamp == other.timestamp) return false;
+        return true;
     }
 };
 #endif //TICKET_SYSTEM_2026_ORDER_H

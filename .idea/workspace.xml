@@ -27,9 +27,228 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46bde112-6358-4957-9df9-9c0603264431" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Account.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Account.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Keys.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Keys.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Order.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Order.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Ticket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Ticket.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/TicketManagement.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/TicketManagement.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Tool_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Tool_functions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Train.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Train.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/TrainSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/TrainSystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/User.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/User.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/1.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/1.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/10.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/10.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/100.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/100.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/101.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/101.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/102.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/102.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/11.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/11.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/12.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/12.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/13.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/13.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/14.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/14.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/15.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/15.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/16.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/16.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/17.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/17.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/18.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/18.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/19.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/19.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/2.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/2.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/20.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/20.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/21.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/21.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/22.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/22.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/23.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/23.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/24.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/24.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/25.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/25.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/26.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/26.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/27.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/27.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/28.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/28.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/29.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/29.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/3.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/3.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/30.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/30.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/31.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/31.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/32.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/32.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/33.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/33.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/34.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/34.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/35.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/35.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/36.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/36.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/37.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/37.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/38.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/38.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/39.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/39.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/4.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/4.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/40.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/40.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/41.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/41.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/42.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/42.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/43.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/43.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/44.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/44.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/45.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/45.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/46.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/46.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/47.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/47.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/48.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/48.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/49.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/49.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/5.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/5.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/50.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/50.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/51.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/51.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/52.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/52.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/53.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/53.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/54.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/54.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/55.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/55.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/56.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/56.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/57.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/57.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/58.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/58.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/59.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/59.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/6.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/6.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/60.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/60.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/61.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/61.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/62.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/62.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/63.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/63.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/64.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/64.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/65.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/65.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/66.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/66.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/67.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/67.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/68.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/68.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/69.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/69.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/7.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/7.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/70.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/70.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/71.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/71.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/72.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/72.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/73.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/73.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/74.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/74.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/75.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/75.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/76.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/76.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/77.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/77.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/78.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/78.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/79.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/79.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/8.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/8.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/80.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/80.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/81.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/81.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/82.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/82.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/83.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/83.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/84.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/84.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/85.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/85.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/86.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/86.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/87.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/87.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/88.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/88.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/89.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/89.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/9.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/9.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/90.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/90.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/91.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/91.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/92.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/92.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/93.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/93.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/94.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/94.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/95.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/95.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/96.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/96.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/97.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/97.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/98.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/98.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/99.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/99.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/config.gen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/config.in.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/config.json.old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/my1.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/1867/ticket.sum" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +277,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:InfinityHty/Ticket-System-2026.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/InfinityHty/Ticket-System-2026.git&quot;,
     &quot;accountId&quot;: &quot;e1a1a3a6-31d0-4263-af44-783282e72854&quot;
   }
 }</component>
@@ -227,18 +446,20 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/SJTU/大一下学期/Data_Structure/Ticket-System-2026",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/hty/Ticket-System-2026",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "two.files.diff.last.used.file": "D:/SJTU/大一下学期/Data_Structure/Ticket-System-2026/testcase/1867/6.out",
+    "two.files.diff.last.used.file": "D:/SJTU/大一下学期/Data_Structure/Ticket-System-2026/testcase/1867/35.out",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\hty\Ticket-System-2026" />
+      <recent name="\\wsl.localhost\Ubuntu\home\hty\Ticket-System-2026\cmake-build-debug" />
       <recent name="D:\SJTU\大一下学期\Data_Structure\Ticket-System-2026" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -246,19 +467,30 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.code">
-    <configuration default="true" type="BIBTEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
-      <texify-bibtex>
-        <compiler />
-        <compiler-path />
-        <compiler-arguments />
-        <envs />
+    <configuration default="true" type="EXTERNAL_TOOL_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify-external>
+        <program>PYTHONTEX</program>
         <main-file />
-        <aux-dir />
-        <latex-distribution>PROJECT_SDK</latex-distribution>
-      </texify-bibtex>
+        <work-dir />
+        <envs />
+      </texify-external>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="MAKEINDEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify-makeindex>
+        <program>MAKEINDEX</program>
+        <main-file />
+        <command-line-args />
+        <work-dir />
+      </texify-makeindex>
       <method v="2" />
     </configuration>
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="code" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="code" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ticket-System-2026" RUN_TARGET_NAME="code">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -274,19 +506,45 @@
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="bpt_storage_test.cpp (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="bpt_storage_test.cpp" CONFIG_NAME="bpt_storage_test.cpp">
+      <option name="sourceFile" value="src\bpt_storage_test.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="oj_submit.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="oj_submit.cpp" CONFIG_NAME="oj_submit.cpp">
       <option name="sourceFile" value="oj_submit.cpp" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="EXTERNAL_TOOL_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
-      <texify-external>
-        <program>PYTHONTEX</program>
-        <main-file />
-        <work-dir />
+    <configuration name="oj_submit.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ticket-System-2026" TARGET_NAME="oj_submit.cpp" CONFIG_NAME="oj_submit.cpp">
+      <option name="sourceFile" value="oj_submit.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify>
+        <compiler>PDFLATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>none</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
         <envs />
-      </texify-external>
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file />
+        <output-path>{projectDir}/out</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>false</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
       <method v="2" />
     </configuration>
     <configuration default="true" type="MAKEINDEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
@@ -331,6 +589,8 @@
       <workItem from="1779865141154" duration="95591000" />
       <workItem from="1780214655140" duration="3000" />
       <workItem from="1780214676741" duration="1476000" />
+      <workItem from="1780216922003" duration="24201000" />
+      <workItem from="1780466742955" duration="15657000" />
     </task>
     <servers />
   </component>
@@ -341,5 +601,16 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cpp</url>
+          <line>618</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

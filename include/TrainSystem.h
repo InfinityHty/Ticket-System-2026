@@ -13,7 +13,7 @@ class TrainSystem {
 public:
     std::string index_file_name1 = "train_index.txt";
     std::string file_name1 = "train.txt";
-    Database<Key20,Train,30,30> train_db;// trainID->Train的所有信息
+    Database<Key20,Train,10,10> train_db;// trainID->Train的所有信息
     Database<Key20,Order,50,50> train_order_db;// trainID->这个train的所有pending订单
     void Init() {
         train_db.Initialize(index_file_name1,file_name1);

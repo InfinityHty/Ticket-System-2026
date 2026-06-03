@@ -36,13 +36,13 @@ inline int StringToInt(const std::string &s) {
 }
 
 inline void StringToChar20(char *ans, const std::string &s) {
-    for (int i = 0; i < 20; i++) ans[i] = '\0';
+    for (int i = 0; i <= 20; i++) ans[i] = '\0';
     int i = 0;
     for (char c : s) ans[i++] = c;
 }
 
 inline void StringToChar40(char *ans, const std::string &s) {
-    for (int i = 0; i < 40; i++) ans[i] = '\0';
+    for (int i = 0; i <= 40; i++) ans[i] = '\0';
     int i = 0;
     for (char c : s) ans[i++] = c;
 }
@@ -156,7 +156,7 @@ inline int GetInterval(Train::Date &d1,Train::Time &t1,Train::Date &d2,Train::Ti
 inline int GetTimeStamp(std::string &s) {
     const size_t size_ = s.size();
     int ans = 0;
-    for (int i = 1; i < size_ - 1; i++) ans = ans * 10 + s[i] - '0';
+    for (int i = 1; i < size_ - 1; i++) ans = ans * 10 + (s[i] - '0');
     return ans;
 }
 #endif //TICKET_SYSTEM_2026_CONVERT_FUNCTIONS_H

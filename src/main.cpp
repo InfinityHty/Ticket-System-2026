@@ -17,7 +17,7 @@
 #include<fstream>
 #include<filesystem>
 sjtu::vector<User> login;
-char record[20];
+char record[21];
 int main() {
     Account ac;
     TrainSystem ts;
@@ -108,7 +108,7 @@ int main() {
                     if (prev == "-u") u = tmp;
                     if (prev == "-p") pp = tmp;
                 }
-                char tmp_u[20];
+                char tmp_u[21];
                 StringToChar20(tmp_u,u);
                 if (!ac.ExistThisUser(tmp_u)) valid = false;
                 else {
@@ -159,7 +159,7 @@ int main() {
                     if (prev == "-c") c = tmp;
                     if (prev == "-u") u = tmp;
                 }
-                char tmp_username[20];
+                char tmp_username[21];
                 StringToChar20(tmp_username,u);
                 User cur;
                 bool exist = false;
@@ -173,7 +173,7 @@ int main() {
                 if (!exist || !ac.ExistThisUser(tmp_username)) valid = false;
                 else {
                     User query = ac.GetUser(tmp_username);
-                    if (cur.privilege < query.privilege || cur.privilege == query.privilege && c != u) valid = false;
+                    if (cur.privilege < query.privilege || (cur.privilege == query.privilege && c != u)) valid = false;
                     else {
                         //std::cerr << cur << '\n';
                         std::cout << timestamp << " " << query << '\n';
@@ -207,7 +207,7 @@ int main() {
                 }
                 if (!exist) valid = false;
                 else {
-                    char tmp_username[20];
+                    char tmp_username[21];
                     StringToChar20(tmp_username,u);
                     if (!ac.ExistThisUser(tmp_username)) valid = false;
                     else {
@@ -215,14 +215,15 @@ int main() {
                         if (pp.empty()) pp = old.password;
                         if (n.empty()) n = old.name;
                         if (m.empty()) m = old.mailAddr;
-                        if (g == -1) g = old.privilege;
-                        if (cur.privilege < old.privilege || g >= cur.privilege) valid = false;
-                        else {
+                        // if (g == -1) g = old.privilege;
+                        if ((c == u || cur.privilege > old.privilege) && g < cur.privilege) {
                             ac.DeleteUser(old);
+                            if (g == -1) g = old.privilege;
                             User modify(u,pp,n,m,g);
                             ac.AddUser(modify);
                             std::cout << timestamp << " " << modify << '\n';
                         }
+                        else valid = false;
                     }
                 }
             }
@@ -255,13 +256,13 @@ int main() {
                     if (prev == "-d") d = SeparateString(tmp);
                     if (prev == "-y") y = tmp;
                 }
-                char tmp_id[20];
+                char tmp_id[21];
                 StringToChar20(tmp_id,i);
                 if (ts.ExistThisTrain(tmp_id)) valid = false;
                 else {
+
                     Train new_train(i,n,m,s,pp,x,t,o,d,y);
                     ts.AddTrain(new_train);
-                    //for (int j = 0; j < 20; j++) record[j] = new_train.trainID[j];
                     std::cout << timestamp << " " << 0 << '\n';
                 }
             }
@@ -269,7 +270,7 @@ int main() {
                 std::string i;
                 instruction >> i;
                 if (i == "-i") instruction >> i;
-                char tmp_t[20];
+                char tmp_t[21];
                 StringToChar20(tmp_t,i);
                 if (!ts.ExistThisTrain(tmp_t)) valid = false;
                 else {
@@ -285,7 +286,7 @@ int main() {
                 std::string tmp,i;
                 instruction >> tmp;
                 if (tmp == "-i") instruction >> i;
-                char tmp_t[20];
+                char tmp_t[21];
                 StringToChar20(tmp_t,i);
                 if (!ts.ExistThisTrain(tmp_t)) valid = false;
                 else {
@@ -318,17 +319,16 @@ int main() {
                     if (prev == "-i") i = tmp;
                     if (prev == "-d") d = GetDate(tmp);
                 }
-                char tmp_t[20];
+                char tmp_t[21];
                 StringToChar20(tmp_t,i);
                 if (!ts.ExistThisTrain(tmp_t)) valid = false;
                 else {
                     Train cur = ts.GetTrain(tmp_t);
-                    //std::cerr << d << " " << cur.saleDate[0] << " " << cur.saleDate[1] << '\n';
                     if (d < cur.saleDate[0] || cur.saleDate[1] < d) valid = false;
                     else {
                         Train::Date tmp_date = d;
                         Train::Time tmp_time = cur.startTime;
-                        int day_id = GetIntervalDays(Train::Date(6,1),tmp_date);
+                        int day_id = GetIntervalDays(cur.saleDate[0],tmp_date);
                         int total_cost = 0;
                         std::cout << timestamp << " " << cur.trainID << " " << cur.type << '\n';
                         for (int j = 0; j < cur.stationNum; j++) {
@@ -377,13 +377,14 @@ int main() {
                 Train cur = ts.GetTrain(it.cont);
                 Train::Date tmp_date0 = cur.saleDate[0],tmp_date1 = cur.saleDate[1];
                 Train::Time tmp_time0 = cur.startTime,tmp_time1 = cur.startTime;
-                int st = 0,ed = 0;// 遍历找到起终点序号
+                int st = 0;// 遍历找到起终点序号
                 while (cur.stations[st] != s) {
                     ComputeDateAndTime(tmp_date0,tmp_time0,cur.travelTimes[st] + cur.stopoverTimes[st]);
                     ComputeDateAndTime(tmp_date1,tmp_time1,cur.travelTimes[st] + cur.stopoverTimes[st]);
                     st++;
                 }
                 if (tmp_date0 <= d && d <= tmp_date1) {
+                    int ed = 0;
                     Train::Time time_ar = tmp_time0;
                     Train::Date day_ar = d;
                     int dur = 0;
@@ -396,7 +397,7 @@ int main() {
                     while (cur.stations[ed] != t) {
                         min_seat = std::min(min_seat,cur.remainTickets[day_id][ed]);
                         total_price += cur.prices[ed];
-                        dur += cur.stopoverTimes[ed - 1] + cur.travelTimes[ed];
+                        dur += (cur.stopoverTimes[ed - 1] + cur.travelTimes[ed]);
                         ComputeDateAndTime(day_ar,time_ar,cur.stopoverTimes[ed - 1] + cur.travelTimes[ed]);
                         ed++;
                     }
@@ -429,11 +430,11 @@ int main() {
                 if (prev == "-p") pp = tmp;
                 if (prev == "-d") d = GetDate(tmp);
             }
-            char tmp_station[40];
+            char tmp_station[41];
             bool can_transfer = false;
             Ticket best_ticket1,best_ticket2;
-            int best_price = 1e9;
-            int best_dur = 1e9;
+            int best_price = 1e9 + 5;
+            int best_dur = 1e9 + 5;
             StringToChar40(tmp_station,s);
             sjtu::vector<Key20> qual_trainID = tm.GetTrainsFromHere(tmp_station);
             for (auto it : qual_trainID) {
@@ -473,7 +474,7 @@ int main() {
                             }
                             if (TimeCompare(tmp_date3,tmp_time3,ticket1.date[1],ticket1.time[1])) continue;
                             else {
-                                can_transfer = true;
+                                // can_transfer = true;
                                 int gap_dur;
                                 Train::Date date2,date2_0;
                                 Train::Time time2,time2_0;
@@ -497,38 +498,49 @@ int main() {
                                 ComputeDateAndTime(date2,time2,train2.travelTimes[st2]);
                                 int ed2 = st2 + 1;
                                 while (train2.stations[ed2] != t) {
-                                    dur2 += train2.travelTimes[ed2] + train2.stopoverTimes[ed2];
+                                    dur2 += (train2.travelTimes[ed2] + train2.stopoverTimes[ed2 - 1]);
                                     price2 += train2.prices[ed2];
                                     min_seat2 = std::min(min_seat2,train2.remainTickets[day_id2][ed2]);
-                                    ComputeDateAndTime(date2,time2,train2.travelTimes[ed2] + train2.stopoverTimes[ed2]);
+                                    ComputeDateAndTime(date2,time2,train2.travelTimes[ed2] + train2.stopoverTimes[ed2 - 1]);
                                     ed2++;
                                 }
                                 Ticket ticket2(train2.trainID,train1.stations[mid],train2.stations[ed2],date2_0,time2_0,date2,time2,dur2,price2,min_seat2);
                                 int dur = dur1 + gap_dur + dur2;
                                 int total_price = price1 + price2;
-                                if (pp == "time") {
-                                    if (dur < best_dur || dur == best_dur && total_price < best_price
-                                        || dur == best_dur && total_price == best_price && std::string(ticket1.trainID) < best_ticket1.trainID
-                                        || dur == best_dur && total_price == best_price && std::string(ticket1.trainID) == best_ticket1.trainID && std::string(ticket2.trainID) < best_ticket2.trainID) {
+                                if (!can_transfer) {
+                                    best_ticket1 = ticket1;
+                                    best_ticket2 = ticket2;
+                                    best_price = total_price;
+                                    best_dur = dur;
+                                    can_transfer = true;
+                                }
+                                else if (pp == "time") {
+                                    if (dur < best_dur || (dur == best_dur && total_price < best_price)
+                                        || (dur == best_dur && total_price == best_price && std::string(ticket1.trainID) < best_ticket1.trainID)
+                                        || (dur == best_dur && total_price == best_price && std::string(ticket1.trainID) == best_ticket1.trainID && std::string(ticket2.trainID) < best_ticket2.trainID)) {
                                         best_ticket1 = ticket1;
                                         best_ticket2 = ticket2;
+                                        best_price = total_price;
+                                        best_dur = dur;
                                     }
                                 }
-                                if (pp == "price") {
-                                    if (total_price < best_price || total_price == best_price && dur < best_dur
-                                        || dur == best_dur && total_price == best_price && std::string(ticket1.trainID) < best_ticket1.trainID
-                                        || dur == best_dur && total_price == best_price && std::string(ticket1.trainID) == best_ticket1.trainID && std::string(ticket2.trainID) < best_ticket2.trainID) {
+                                else if (pp == "cost") {
+                                    if (total_price < best_price || (total_price == best_price && dur < best_dur)
+                                        || (dur == best_dur && total_price == best_price && std::string(ticket1.trainID) < best_ticket1.trainID)
+                                        || (dur == best_dur && total_price == best_price && std::string(ticket1.trainID) == best_ticket1.trainID && std::string(ticket2.trainID) < best_ticket2.trainID)) {
                                         best_ticket1 = ticket1;
                                         best_ticket2 = ticket2;
+                                        best_price = total_price;
+                                        best_dur = dur;
                                         }
                                 }
                             }
                         }
                         if (mid == train1.stationNum - 1) break;
-                        dur1 += train1.travelTimes[mid] + train1.stopoverTimes[mid];
+                        dur1 += train1.travelTimes[mid] + train1.stopoverTimes[mid - 1];
                         price1 += train1.prices[mid];
                         min_seat1 = std::min(min_seat1,train1.remainTickets[day_id1][mid]);
-                        ComputeDateAndTime(date,time,train1.travelTimes[mid] + train1.stopoverTimes[mid]);
+                        ComputeDateAndTime(date,time,train1.travelTimes[mid] + train1.stopoverTimes[mid - 1]);
                     }
                 }
             }
@@ -556,7 +568,8 @@ int main() {
                 if (prev == "-n") n = StringToInt(tmp);
                 if (prev == "-q") q = tmp;
             }
-            char tmp_train_id[20],tmp_user[20];
+
+            char tmp_train_id[21];
             StringToChar20(tmp_train_id,i);
             User cur_user;
             bool exist = false;
@@ -567,7 +580,7 @@ int main() {
                     break;
                 }
             }
-            if (!exist) valid = false;
+            if (!exist || f == t) valid = false;
             else {
                 if (!ts.ExistThisTrain(tmp_train_id)) valid = false;
                 else {
@@ -577,12 +590,12 @@ int main() {
                         Train::Date tmp_date0 = cur_train.saleDate[0], tmp_date1 = cur_train.saleDate[1];
                         Train::Time tmp_time0 = cur_train.startTime, tmp_time1 = cur_train.startTime;
                         int st = 0;
-                        while (cur_train.stations[st] != f && st < cur_train.stationNum) {
+                        while (st < cur_train.stationNum && cur_train.stations[st] != f) {
                             ComputeDateAndTime(tmp_date0,tmp_time0,cur_train.travelTimes[st] + cur_train.stopoverTimes[st]);
                             ComputeDateAndTime(tmp_date1,tmp_time1,cur_train.travelTimes[st] + cur_train.stopoverTimes[st]);
                             st++;
                         }
-                        if (tmp_date0 <= d && d <= tmp_date1) {
+                        if (st < cur_train.stationNum - 1 && tmp_date0 <= d && d <= tmp_date1) {
                             Train::Date date = d;
                             Train::Time time = tmp_time0;
                             int dur = 0;
@@ -592,18 +605,19 @@ int main() {
                             int ed = st + 1;
                             dur += cur_train.travelTimes[st];
                             ComputeDateAndTime(date,time,cur_train.travelTimes[st]);
-                            while (cur_train.stations[ed] != t && ed < cur_train.stationNum) {
+                            while (ed < cur_train.stationNum && cur_train.stations[ed] != t ) {
                                 min_seat = std::min(min_seat,cur_train.remainTickets[day_id][ed]);
                                 price += cur_train.prices[ed];
-                                dur += cur_train.stopoverTimes[ed] + cur_train.travelTimes[ed];
+                                dur += cur_train.stopoverTimes[ed - 1] + cur_train.travelTimes[ed];
                                 ComputeDateAndTime(date,time,cur_train.stopoverTimes[ed - 1] + cur_train.travelTimes[ed]);
                                 ed++;
                             }
-                            if (ed >= cur_train.stationNum) valid = false;
+                            if (ed == cur_train.stationNum) valid = false;
                             else {
                                 Ticket ticket(cur_train.trainID,cur_train.stations[st],cur_train.stations[ed],d,tmp_time0,date,time,dur,price,min_seat);
                                 if (n <= min_seat) {
                                     ts.DeleteTrain(cur_train);
+                                    // if (timestamp == "[21589]") std::cout << n << " " << min_seat << '\n';
                                     std::cout << timestamp << " " << price * n << '\n';
                                     for (int j = st; j < ed; j++) cur_train.remainTickets[day_id][j] -= n;
                                     ts.AddTrain(cur_train);
@@ -611,7 +625,7 @@ int main() {
                                     ac.AddUserOrder(order);
                                 }
                                 else if (q == "false") valid = false;
-                                else {
+                                else if (q == "true") {
                                     std::cout << timestamp << " " << "queue" << '\n';
                                     Order order(cur_user.username,GetTimeStamp(timestamp),Order::Status::pending,ticket,n);
                                     ac.AddUserOrder(order);
@@ -684,7 +698,7 @@ int main() {
                         ac.DeleteUserOrder(refund);
                         refund.status = Order::Status::refunded;
                         ac.AddUserOrder(refund);
-                    // 把退掉的位置加回到列车信息里面
+                        // 把退掉的位置加回到列车信息里面
                         if (!pending) {
                             // 买到了再退
                             Train train = ts.GetTrain(refund.ticket.trainID);
@@ -705,21 +719,23 @@ int main() {
                             sjtu::vector<Order> order_of_this_train = ts.GetAllTrainOrders(refund.ticket.trainID);
                             for (auto it : order_of_this_train) {
                                 // 检查每个还存在的订单是否可以成立 按照时间从先到后的顺序
+                                if (it.status != Order::Status::pending) continue;
                                 int st2 = 0;
-                                tmp_date = train.saleDate[0];
-                                tmp_time = train.startTime;
+                                Train::Date date2 = train.saleDate[0];
+                                Train::Time time2 = train.startTime;
                                 while (std::string(train.stations[st2]) != it.ticket.start) {
-                                    ComputeDateAndTime(tmp_date,tmp_time,train.travelTimes[st2] + train.stopoverTimes[st2]);
+                                    ComputeDateAndTime(date2,time2,train.travelTimes[st2] + train.stopoverTimes[st2]);
                                     st2++;
                                 }
-                                int day_id2 = GetIntervalDays(tmp_date,it.ticket.date[0]);
+                                int day_id2 = GetIntervalDays(date2,it.ticket.date[0]);
+                                if (day_id != day_id2) continue;
                                 int min_seat = train.remainTickets[day_id2][st2];
                                 int ed2 = st2 + 1;
                                 while (std::string(train.stations[ed2]) != it.ticket.end) {
                                     min_seat = std::min(min_seat,train.remainTickets[day_id2][ed2]);
                                     ed2++;
                                 }
-                                if (min_seat <= it.number) {
+                                if (min_seat >= it.number) {
                                     // 成功候补
                                     it.status = Order::Status::success;
                                     for (int i = st2; i < ed2; i++) train.remainTickets[day_id2][i] -= it.number;

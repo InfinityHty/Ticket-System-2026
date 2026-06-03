@@ -8,37 +8,37 @@
 #include<iostream>
 class User {
 public:
-    char username[20];
-    char password[30];
-    char name[20];
-    char mailAddr[40];
+    char username[21];
+    char password[31];
+    char name[21];
+    char mailAddr[41];
     int privilege;
     User() {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             username[i] = '\0';
             name[i] = '\0';
             password[i] = '\0';
             mailAddr[i] = '\0';
         }
-        for (int i = 20; i < 30; i++) {
+        for (int i = 20; i <= 30; i++) {
             password[i] = '\0';
         }
-        for (int i = 20; i < 40; i++) mailAddr[i] = '\0';
+        for (int i = 20; i <= 40; i++) mailAddr[i] = '\0';
         privilege = 10;
     }
     User(std::string &username_, std::string &password_, std::string &name_, std::string &mailAddr_, int privilege_) {
         int size_ = username_.size();
         for (int i = 0; i < size_; i++) username[i] = username_[i];
-        for (int i = size_; i < 20; i++) username[i] = '\0';
+        for (int i = size_; i <= 20; i++) username[i] = '\0';
         size_ = password_.size();
         for (int i = 0; i < size_; i++) password[i] = password_[i];
-        for (int i = size_; i < 30; i++) password[i] = '\0';
+        for (int i = size_; i <= 30; i++) password[i] = '\0';
         size_ = name_.size();
         for (int i = 0; i < size_; i++) name[i] = name_[i];
-        for (int i = size_; i < 20; i++) name[i] = '\0';
+        for (int i = size_; i <= 20; i++) name[i] = '\0';
         size_ = mailAddr_.size();
         for (int i = 0; i < size_; i++) mailAddr[i] = mailAddr_[i];
-        for (int i = size_; i < 40; i++) mailAddr[i] = '\0';
+        for (int i = size_; i <= 40; i++) mailAddr[i] = '\0';
         privilege = privilege_;
         // std::cerr << username << " " << password << " " << name << " " << mailAddr << " " << privilege << '\n';
     }

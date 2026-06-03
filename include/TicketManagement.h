@@ -38,27 +38,27 @@ public:
     void SortByTime(sjtu::vector<Ticket> &t) {
         int num = t.size();
         for (int i = 0; i < num; i++) {
+            bool flag = false;
             for (int j = 0; j < num - i - 1; j++) {
-                bool flag = false;
-                if (t[j].duration > t[j + 1].duration || t[j].duration == t[j + 1].duration && std::string(t[j].trainID) > std::string(t[j + 1].trainID)) {
+                if (t[j].duration > t[j + 1].duration || (t[j].duration == t[j + 1].duration && std::string(t[j].trainID) > std::string(t[j + 1].trainID))) {
                     std::swap(t[j],t[j + 1]);
                     flag = true;
                 }
-                if (!flag) break;
             }
+            if (!flag) break;
         }
     }
     void SortByPrice(sjtu::vector<Ticket> &t) {
         int num = t.size();
         for (int i = 0; i < num; i++) {
+            bool flag = false;
             for (int j = 0; j < num - i - 1; j++) {
-                bool flag = false;
-                if (t[j].price > t[j + 1].price || t[j].price == t[j + 1].price && std::string(t[j].trainID) > std::string(t[j + 1].trainID)) {
+                if (t[j].price > t[j + 1].price || (t[j].price == t[j + 1].price && std::string(t[j].trainID) > std::string(t[j + 1].trainID))) {
                     std::swap(t[j],t[j + 1]);
                     flag = true;
                 }
-                if (!flag) break;
             }
+            if (!flag) break;
         }
     }
 private:
