@@ -14,7 +14,7 @@ class TrainSystem {
 public:
     std::string index_file_name1 = "train_index.txt";
     std::string file_name1 = "train.txt";
-    Database<Key20,unsigned long long,200,200> train_db;// trainID->Train的所有信息
+    Database<Key20,long long,100,100> train_db;// trainID->Train的所有信息
     Database<Key20,Order,50,50> train_order_db;// trainID->这个train的所有pending订单
     MemoryRiver<Train> train_mr;
     void Init() {

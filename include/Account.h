@@ -15,7 +15,7 @@ class Account {
 public:
     std::string index_file_name = "account_index.txt";
     std::string file_name = "account.txt";
-    Database<Key20,long long,200,200> account_db;// username->User所有信息
+    Database<Key20,long long,100,100> account_db;// username->User所有信息
     Database<Key20,Order,50,50> order_db;// username->这个user的所有订单
     MemoryRiver<User> user_mr;
     // MemoryRiver<Order> order_mr;
