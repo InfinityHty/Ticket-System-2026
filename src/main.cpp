@@ -580,7 +580,7 @@ int main() {
                     break;
                 }
             }
-            if (!exist || f == t) valid = false;
+            if (!exist) valid = false;
             else {
                 if (!ts.ExistThisTrain(tmp_train_id)) valid = false;
                 else {
@@ -590,7 +590,7 @@ int main() {
                         Train::Date tmp_date0 = cur_train.saleDate[0], tmp_date1 = cur_train.saleDate[1];
                         Train::Time tmp_time0 = cur_train.startTime, tmp_time1 = cur_train.startTime;
                         int st = 0;
-                        while (st < cur_train.stationNum && cur_train.stations[st] != f) {
+                        while (st < cur_train.stationNum - 1 && cur_train.stations[st] != f) {
                             ComputeDateAndTime(tmp_date0,tmp_time0,cur_train.travelTimes[st] + cur_train.stopoverTimes[st]);
                             ComputeDateAndTime(tmp_date1,tmp_time1,cur_train.travelTimes[st] + cur_train.stopoverTimes[st]);
                             st++;

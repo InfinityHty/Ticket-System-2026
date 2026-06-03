@@ -22,4 +22,5 @@ add_executable(code
         include/User.h
 
         src/main.cpp
+        include/MemoryRiver.h
 )
