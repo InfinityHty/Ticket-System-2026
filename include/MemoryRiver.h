@@ -72,7 +72,7 @@ public:
         /* your code here */
         // file.open(file_name, fstream::binary | std::ios::in | std::ios::out);
         file.seekp(0,std::ios::end);
-        int index = file.tellp();
+        long long index = file.tellp();
         file.write(reinterpret_cast<char *>(&t), sizeof(T));
         // file.close();
         return index;
