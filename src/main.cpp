@@ -631,7 +631,7 @@ int main() {
                                     // if (GetTimeStamp(timestamp) >= 18873) std::cout << timestamp << " " << order << '\n';
                                     ac.AddUserOrder(order);
                                 }
-                                else if (q == "false") valid = false;
+                                else if (q == "false" || n > cur_train.seatNum) valid = false;
                                 else if (q == "true") {
                                     std::cout << timestamp << " " << "queue" << '\n';
                                     Order order(cur_user.username,GetTimeStamp(timestamp),Order::Status::pending,ticket,n);
