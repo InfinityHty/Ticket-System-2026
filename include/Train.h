@@ -124,47 +124,47 @@ public:
         }
     }
     friend bool operator <(Train &a,Train &b) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             if (a.trainID[i] < b.trainID[i]) return true;
             if (a.trainID[i] > b.trainID[i]) return false;
         }
         return false;
     }
     friend bool operator >(Train &a,Train &b) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             if (a.trainID[i] > b.trainID[i]) return true;
             if (a.trainID[i] < b.trainID[i]) return false;
         }
         return false;
     }
     friend bool operator <=(Train &a,Train &b) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             if (a.trainID[i] < b.trainID[i]) return true;
             if (a.trainID[i] > b.trainID[i]) return false;
         }
         return true;
     }
     friend bool operator >=(Train &a,Train &b) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             if (a.trainID[i] > b.trainID[i]) return true;
             if (a.trainID[i] < b.trainID[i]) return false;
         }
         return true;
     }
     friend bool operator ==(Train &a,Train &b) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             if (a.trainID[i] != b.trainID[i]) return false;
         }
         return true;
     }
     friend bool operator !=(Train &a,Train &b) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i <= 20; i++) {
             if (a.trainID[i] != b.trainID[i]) return true;
         }
         return false;
     }
 private:
-    Date GetDate(std::string &s) {
+    static Date GetDate(std::string &s) {
         Date date;
         date.month = (s[0] - '0') * 10 + (s[1] - '0');
         date.day = (s[3] - '0') * 10 + (s[4] - '0');

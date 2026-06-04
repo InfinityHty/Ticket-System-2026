@@ -17,24 +17,28 @@ public:
     std::string file_name = "account.txt";
     Database<Key20,long long,100,100> account_db;// username->User所有信息
     Database<Key20,Order,50,50> order_db;// username->这个user的所有订单
+    Database<Key20,Order,50,50> train_order_db;
     MemoryRiver<User> user_mr;
     // MemoryRiver<Order> order_mr;
     void Init() {
         account_db.Initialize(index_file_name,file_name);
         order_db.Initialize("order_index.txt","order.txt");
         user_mr.Initialize("user_memory.txt");
+        train_order_db.Initialize("train_order_index.txt","train_order.txt");
         // order_mr.Initialize("order_memory.txt");
     }
     void Close() {
         account_db.Close();
         order_db.Close();
         user_mr.Close();
+        train_order_db.Close();
         // order_mr.Close();
     }
     void Clear() {
         account_db.Clear();
         order_db.Clear();
         user_mr.Clear();
+        train_order_db.Clear();
         // order_mr.Clear();
     }
     // void Find(const char *username_) {
@@ -64,8 +68,28 @@ public:
     void DeleteUserOrder(Order &order) {
         order_db.Delete(Key20(order.username),order);
     }
-    sjtu::vector<Order> GetAllUserOrders(const char *username_) {
-        return order_db.GetAllDatas(Key20(username_));
+    bool ExistThisUserOrder(const char *username_) {
+        return order_db.Exist(Key20(username_));
     }
+    sjtu::vector<Order> GetAllUserOrders(const char *username_) {
+        return order_db.GetAllDatas(username_);
+    }
+
+
+    void AddTrainOrder(Order &order) {
+        train_order_db.Insert(Key20(order.ticket.trainID),order);
+    }
+    void DeleteTrainOrder(Order &order) {
+        train_order_db.Delete(Key20(order.ticket.trainID),order);
+    }
+    bool ExistThisTrainOrder(const Order &order) {
+        return train_order_db.Exist(order.ticket.trainID);
+    }
+    sjtu::vector<Order> GetAllTrainOrders(const Key20 &trainID_) {
+        return train_order_db.GetAllDatas(trainID_);
+        // return sjtu::vector<Order>{};
+    }
+
+
 };
 #endif //TICKET_SYSTEM_2026_ACCOUNT_H

@@ -22,9 +22,11 @@ int main() {
     Account ac;
     TrainSystem ts;
     TicketManagement tm;
+    //DontKnowWhy ddd;
     ac.Init();
     ts.Init();
     tm.Init();
+    //ddd.Init();
     while (true) {
         bool valid = true;
         std::string input;
@@ -37,6 +39,7 @@ int main() {
             ac.Close();
             ts.Close();
             tm.Close();
+            //ddd.Close();
             std::cout << timestamp << " bye";
             break;
         }
@@ -370,7 +373,8 @@ int main() {
                 if (prev == "-p") pp = tmp;
                 if (prev == "-d") d = GetDate(tmp);
             }
-            sjtu::vector<Key20> qual_trainID = tm.GetQualifiedTrains(s,t);
+            sjtu::vector<Key20> qual_trainID{};
+            if (tm.ExistTicket(TicketKey(s,t))) qual_trainID = tm.GetQualifiedTrains(s,t);
             sjtu::vector<Ticket> qual_ticket;
             int cnt = 0;
             for (auto & it : qual_trainID) {
@@ -436,7 +440,8 @@ int main() {
             int best_price = 1e9 + 5;
             int best_dur = 1e9 + 5;
             StringToChar40(tmp_station,s);
-            sjtu::vector<Key20> qual_trainID = tm.GetTrainsFromHere(tmp_station);
+            sjtu::vector<Key20> qual_trainID{};
+            if (tm.ExistStation(tmp_station)) qual_trainID = tm.GetTrainsFromHere(tmp_station);
             for (auto it : qual_trainID) {
                 Train train1 = ts.GetTrain(it.cont);
                 int st1 = 0;
@@ -458,7 +463,8 @@ int main() {
                     for (int mid = st1 + 1; mid < train1.stationNum; mid++) {
                         // 查询mid到t的车票
                         Ticket ticket1(it.cont,train1.stations[st1],train1.stations[mid],d,tmp_time0,date,time,dur1,price1,min_seat1);
-                        sjtu::vector<Key20> ticket2_trainID = tm.GetQualifiedTrains(std::string(train1.stations[mid]),t);
+                        sjtu::vector<Key20> ticket2_trainID{};
+                        if (tm.ExistTicket(TicketKey(std::string(train1.stations[mid]),t))) ticket2_trainID = tm.GetQualifiedTrains(std::string(train1.stations[mid]),t);
                         // 把ticket2_trainID遍历一遍，找到符合要求的ticket2，计算1+2的组合 存到一个变量里,每次比较取最优
                         for (auto it2 : ticket2_trainID) {
                             // 不能同一辆车
@@ -622,6 +628,7 @@ int main() {
                                     for (int j = st; j < ed; j++) cur_train.remainTickets[day_id][j] -= n;
                                     ts.AddTrain(cur_train);
                                     Order order(cur_user.username,GetTimeStamp(timestamp),Order::Status::success,ticket,n);
+                                    // if (GetTimeStamp(timestamp) >= 18873) std::cout << timestamp << " " << order << '\n';
                                     ac.AddUserOrder(order);
                                 }
                                 else if (q == "false") valid = false;
@@ -629,7 +636,7 @@ int main() {
                                     std::cout << timestamp << " " << "queue" << '\n';
                                     Order order(cur_user.username,GetTimeStamp(timestamp),Order::Status::pending,ticket,n);
                                     ac.AddUserOrder(order);
-                                    ts.AddTrainOrder(order);
+                                    ac.AddTrainOrder(order);
                                 }
                             }
                         }
@@ -653,7 +660,8 @@ int main() {
             }
             if (!exist) valid = false;
             else {
-                sjtu::vector<Order> orders = ac.GetAllUserOrders(cur.username);
+                sjtu::vector<Order> orders{};
+                if (ac.ExistThisUserOrder(cur.username)) orders = ac.GetAllUserOrders(cur.username);
                 int size_ = orders.size();
                 std::cout << timestamp << " " << size_ << '\n';
                 for (int i = size_ - 1; i >= 0; i--) {
@@ -683,7 +691,8 @@ int main() {
             }
             if (!exist) valid = false;
             else {
-                sjtu::vector<Order> orders = ac.GetAllUserOrders(cur.username);
+                sjtu::vector<Order> orders{};
+                if (ac.ExistThisUserOrder(cur.username)) orders = ac.GetAllUserOrders(cur.username);
                 size_t size_ = orders.size();
                 if (n > 0 && n <= size_) {
                     Order refund = orders[size_ - n];
@@ -693,7 +702,7 @@ int main() {
                         bool pending = false;
                         if (refund.status == Order::Status::pending) {
                             pending = true;
-                            ts.DeleteTrainOrder(refund);
+                            ac.DeleteTrainOrder(refund);
                         }
                         ac.DeleteUserOrder(refund);
                         refund.status = Order::Status::refunded;
@@ -716,7 +725,11 @@ int main() {
                                 ed++;
                             }
                             // 处理补票
-                            sjtu::vector<Order> order_of_this_train = ts.GetAllTrainOrders(refund.ticket.trainID);
+                            sjtu::vector<Order> order_of_this_train{};
+                            if (ac.ExistThisTrainOrder(refund)) {
+                                order_of_this_train = ac.GetAllTrainOrders(refund.ticket.trainID);
+                            }
+                            // if (GetTimeStamp(timestamp) >= 18873) std::cout << timestamp << " " << order_of_this_train.size() << '\n';
                             for (auto it : order_of_this_train) {
                                 // 检查每个还存在的订单是否可以成立 按照时间从先到后的顺序
                                 if (it.status != Order::Status::pending) continue;
@@ -741,7 +754,7 @@ int main() {
                                     for (int i = st2; i < ed2; i++) train.remainTickets[day_id2][i] -= it.number;
                                     ac.DeleteUserOrder(it);
                                     ac.AddUserOrder(it);
-                                    ts.DeleteTrainOrder(it);
+                                    ac.DeleteTrainOrder(it);
                                 }
                             }
                             ts.DeleteTrain(train);

@@ -25,8 +25,14 @@ public:
     void AddTicket(const TicketKey &key, const char *train_id) {
         ticket_db.Insert(key,Key20(train_id));
     }
+    bool ExistTicket(const TicketKey &key) {
+        return ticket_db.Exist(key);
+    }
     void AddTrainToStation(const char *station, const char *train_id) {
         station_db.Insert(Key40(station),Key20(train_id));
+    }
+    bool ExistStation(const char *station) {
+        return station_db.Exist(Key40(station));
     }
     sjtu::vector<Key20> GetQualifiedTrains(const std::string &st,const std::string &ed) {
         return ticket_db.GetAllDatas(TicketKey(st,ed));

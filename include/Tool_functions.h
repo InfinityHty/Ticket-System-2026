@@ -37,14 +37,12 @@ inline int StringToInt(const std::string &s) {
 
 inline void StringToChar20(char *ans, const std::string &s) {
     for (int i = 0; i <= 20; i++) ans[i] = '\0';
-    int i = 0;
-    for (char c : s) ans[i++] = c;
+    for (int i = 0; i < s.size(); i++) ans[i] = s[i];
 }
 
 inline void StringToChar40(char *ans, const std::string &s) {
     for (int i = 0; i <= 40; i++) ans[i] = '\0';
-    int i = 0;
-    for (char c : s) ans[i++] = c;
+    for (int i = 0; i < s.size(); i++) ans[i] = s[i];
 }
 
 inline sjtu::vector<std::string> SeparateString(const std::string &s) {
@@ -126,18 +124,22 @@ inline void ComputeDateAndTime(Train::Date &d1,Train::Time &t1,int interval) {
     }
 }
 // 默认b在a之后
-int GetIntervalDays(const Train::Date &a,const Train::Date &b) {
+inline int GetIntervalDays(const Train::Date &a,const Train::Date &b) {
     if (a.month == b.month) {
         return b.day - a.day;
     }
-    if (b.month == 7) {
+    if (b.month == 7 && a.month == 6) {
         return b.day + 30 - a.day;
     }
     if (b.month == 8 && a.month == 7) return b.day + 31 - a.day;
     if (b.month == 8 && a.month == 6) return b.day + 30 - a.day + 31;
+    if (b.month == 9 && a.month == 6) return b.day + 31 + 31 + 30 - a.day;
+    if (b.month == 9 && a.month == 7) return b.day + 31 + 31 - a.day;
+    if (b.month == 9 && a.month == 8) return b.day + 31 - a.day;
+    return -1;
 }
 
-inline int GetInterval(Train::Date &d1,Train::Time &t1,Train::Date &d2,Train::Time &t2) {
+inline int GetInterval(const Train::Date &d1, const Train::Time &t1, const Train::Date &d2, const Train::Time &t2) {
     // 计算间隔的时间（min）
     // 一趟车运行时间不超过72 * 60min
     int ans = 0;
@@ -148,8 +150,11 @@ inline int GetInterval(Train::Date &d1,Train::Time &t1,Train::Date &d2,Train::Ti
     else if (d1.month == 7 && d2.month == 8) {
         ans += (d2.day + 31 - d1.day) * 24 * 60;
     }
-    ans += 60 * (t2.hour - t1.hour);
-    ans += t2.minute - t1.minute;
+    else if (d1.month == 8 && d2.month == 9) {
+        ans += (d2.day + 31 - d1.day) * 24 * 60;
+    }
+    ans += (60 * (t2.hour - t1.hour));
+    ans += (t2.minute - t1.minute);
     return ans;
 }
 
