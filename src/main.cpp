@@ -636,7 +636,7 @@ int main() {
                                     std::cout << timestamp << " " << "queue" << '\n';
                                     Order order(cur_user.username,GetTimeStamp(timestamp),Order::Status::pending,ticket,n);
                                     ac.AddUserOrder(order);
-                                    ac.AddTrainOrder(order);
+                                    ts.AddTrainOrder(order);
                                 }
                             }
                         }
@@ -702,7 +702,7 @@ int main() {
                         bool pending = false;
                         if (refund.status == Order::Status::pending) {
                             pending = true;
-                            ac.DeleteTrainOrder(refund);
+                            ts.DeleteTrainOrder(refund);
                         }
                         ac.DeleteUserOrder(refund);
                         refund.status = Order::Status::refunded;
@@ -726,8 +726,8 @@ int main() {
                             }
                             // 处理补票
                             sjtu::vector<Order> order_of_this_train{};
-                            if (ac.ExistThisTrainOrder(refund)) {
-                                order_of_this_train = ac.GetAllTrainOrders(refund.ticket.trainID);
+                            if (ts.ExistThisTrainOrder(refund)) {
+                                order_of_this_train = ts.GetAllTrainOrders(refund.ticket.trainID);
                             }
                             // if (GetTimeStamp(timestamp) >= 18873) std::cout << timestamp << " " << order_of_this_train.size() << '\n';
                             for (auto it : order_of_this_train) {
@@ -754,7 +754,7 @@ int main() {
                                     for (int i = st2; i < ed2; i++) train.remainTickets[day_id2][i] -= it.number;
                                     ac.DeleteUserOrder(it);
                                     ac.AddUserOrder(it);
-                                    ac.DeleteTrainOrder(it);
+                                    ts.DeleteTrainOrder(it);
                                 }
                             }
                             ts.DeleteTrain(train);

@@ -12,7 +12,7 @@ public:
     char trainID[21];
     int stationNum;
     int seatNum;
-    char stations[100][41];
+    char stations[24][41];
     int prices[99];
     struct Time {
         int hour;

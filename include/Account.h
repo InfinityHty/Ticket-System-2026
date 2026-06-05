@@ -15,30 +15,30 @@ class Account {
 public:
     std::string index_file_name = "account_index.txt";
     std::string file_name = "account.txt";
-    Database<Key20,long long,100,100> account_db;// username->User所有信息
+    Database<Key20,long long,50,50> account_db;// username->User所有信息
     Database<Key20,Order,50,50> order_db;// username->这个user的所有订单
-    Database<Key20,Order,50,50> train_order_db;
+    //Database<Key20,Order,50,50> train_order_db;// trainID->这个train的所有pending订单
     MemoryRiver<User> user_mr;
     // MemoryRiver<Order> order_mr;
     void Init() {
         account_db.Initialize(index_file_name,file_name);
         order_db.Initialize("order_index.txt","order.txt");
         user_mr.Initialize("user_memory.txt");
-        train_order_db.Initialize("train_order_index.txt","train_order.txt");
+        //train_order_db.Initialize("train_order_index.txt","train_order.txt");
         // order_mr.Initialize("order_memory.txt");
     }
     void Close() {
         account_db.Close();
         order_db.Close();
         user_mr.Close();
-        train_order_db.Close();
+        //train_order_db.Close();
         // order_mr.Close();
     }
     void Clear() {
         account_db.Clear();
         order_db.Clear();
         user_mr.Clear();
-        train_order_db.Clear();
+        //train_order_db.Clear();
         // order_mr.Clear();
     }
     // void Find(const char *username_) {
@@ -76,19 +76,19 @@ public:
     }
 
 
-    void AddTrainOrder(Order &order) {
-        train_order_db.Insert(Key20(order.ticket.trainID),order);
-    }
-    void DeleteTrainOrder(Order &order) {
-        train_order_db.Delete(Key20(order.ticket.trainID),order);
-    }
-    bool ExistThisTrainOrder(const Order &order) {
-        return train_order_db.Exist(order.ticket.trainID);
-    }
-    sjtu::vector<Order> GetAllTrainOrders(const Key20 &trainID_) {
-        return train_order_db.GetAllDatas(trainID_);
-        // return sjtu::vector<Order>{};
-    }
+    // void AddTrainOrder(Order &order) {
+    //     train_order_db.Insert(Key20(order.ticket.trainID),order);
+    // }
+    // void DeleteTrainOrder(Order &order) {
+    //     train_order_db.Delete(Key20(order.ticket.trainID),order);
+    // }
+    // bool ExistThisTrainOrder(const Order &order) {
+    //     return train_order_db.Exist(order.ticket.trainID);
+    // }
+    // sjtu::vector<Order> GetAllTrainOrders(const Key20 &trainID_) {
+    //     return train_order_db.GetAllDatas(trainID_);
+    //     // return sjtu::vector<Order>{};
+    // }
 
 
 };
