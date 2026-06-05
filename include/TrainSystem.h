@@ -15,9 +15,9 @@ class TrainSystem {
 public:
     std::string index_file_name1 = "train_index.txt";
     std::string file_name1 = "train.txt";
-    Database<Key20,long long,50,50> train_db;// trainID->Train的所有信息
+    Database<Key20,long long,40,40> train_db;// trainID->Train的所有信息
     MemoryRiver<Train> train_mr;
-    Database<Key20,Order,20,20> train_order_db;// trainID->这个train的所有pending订单
+    Database<Key20,Order,40,40> train_order_db;// trainID->这个train的所有pending订单
     void Init() {
         train_db.Initialize(index_file_name1,file_name1);
         train_order_db.Initialize("train_order_index.txt","train_order.txt");
@@ -48,6 +48,10 @@ public:
     void DeleteTrain(Train &train) {
         long long idx = train_db.GetData(train.trainID);
         train_db.Delete(Key20(train.trainID),idx);
+    }
+    void ModifyTrain(Train &train) {
+        long long idx = train_db.GetData(train.trainID);
+        train_mr.update(train,idx);
     }
     void AddTrainOrder(Order &order) {
         train_order_db.Insert(Key20(order.ticket.trainID),order);

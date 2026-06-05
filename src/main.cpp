@@ -22,11 +22,9 @@ int main() {
     Account ac;
     TrainSystem ts;
     TicketManagement tm;
-    //DontKnowWhy ddd;
     ac.Init();
     ts.Init();
     tm.Init();
-    //ddd.Init();
     while (true) {
         bool valid = true;
         std::string input;
@@ -39,7 +37,6 @@ int main() {
             ac.Close();
             ts.Close();
             tm.Close();
-            //ddd.Close();
             std::cout << timestamp << " bye";
             break;
         }
@@ -220,10 +217,10 @@ int main() {
                         if (m.empty()) m = old.mailAddr;
                         // if (g == -1) g = old.privilege;
                         if ((c == u || cur.privilege > old.privilege) && g < cur.privilege) {
-                            ac.DeleteUser(old);
+                            // ac.DeleteUser(old);
                             if (g == -1) g = old.privilege;
                             User modify(u,pp,n,m,g);
-                            ac.AddUser(modify);
+                            ac.ModifyUser(modify);
                             std::cout << timestamp << " " << modify << '\n';
                         }
                         else valid = false;
@@ -296,9 +293,9 @@ int main() {
                     Train cur = ts.GetTrain(tmp_t);
                     if (cur.release == true) valid = false;
                     else {
-                        ts.DeleteTrain(cur);
+                        // ts.DeleteTrain(cur);
                         cur.release = true;
-                        ts.AddTrain(cur);
+                        ts.ModifyTrain(cur);
                         for (int j = 0; j < cur.stationNum; j++) {
                             tm.AddTrainToStation(cur.stations[j],cur.trainID);
                         }
@@ -441,7 +438,8 @@ int main() {
             int best_dur = 1e9 + 5;
             StringToChar40(tmp_station,s);
             sjtu::vector<Key20> qual_trainID{};
-            if (tm.ExistStation(tmp_station)) qual_trainID = tm.GetTrainsFromHere(tmp_station);
+            if (tm.ExistStation(tmp_station))
+                qual_trainID = tm.GetTrainsFromHere(tmp_station);
             for (auto it : qual_trainID) {
                 Train train1 = ts.GetTrain(it.cont);
                 int st1 = 0;
@@ -464,7 +462,8 @@ int main() {
                         // 查询mid到t的车票
                         Ticket ticket1(it.cont,train1.stations[st1],train1.stations[mid],d,tmp_time0,date,time,dur1,price1,min_seat1);
                         sjtu::vector<Key20> ticket2_trainID{};
-                        if (tm.ExistTicket(TicketKey(std::string(train1.stations[mid]),t))) ticket2_trainID = tm.GetQualifiedTrains(std::string(train1.stations[mid]),t);
+                        if (tm.ExistTicket(TicketKey(std::string(train1.stations[mid]),t)))
+                            ticket2_trainID = tm.GetQualifiedTrains(std::string(train1.stations[mid]),t);
                         // 把ticket2_trainID遍历一遍，找到符合要求的ticket2，计算1+2的组合 存到一个变量里,每次比较取最优
                         for (auto it2 : ticket2_trainID) {
                             // 不能同一辆车
@@ -622,11 +621,11 @@ int main() {
                             else {
                                 Ticket ticket(cur_train.trainID,cur_train.stations[st],cur_train.stations[ed],d,tmp_time0,date,time,dur,price,min_seat);
                                 if (n <= min_seat) {
-                                    ts.DeleteTrain(cur_train);
+                                    // ts.DeleteTrain(cur_train);
                                     // if (timestamp == "[21589]") std::cout << n << " " << min_seat << '\n';
                                     std::cout << timestamp << " " << price * n << '\n';
                                     for (int j = st; j < ed; j++) cur_train.remainTickets[day_id][j] -= n;
-                                    ts.AddTrain(cur_train);
+                                    ts.ModifyTrain(cur_train);
                                     Order order(cur_user.username,GetTimeStamp(timestamp),Order::Status::success,ticket,n);
                                     // if (GetTimeStamp(timestamp) >= 18873) std::cout << timestamp << " " << order << '\n';
                                     ac.AddUserOrder(order);
@@ -757,8 +756,8 @@ int main() {
                                     ts.DeleteTrainOrder(it);
                                 }
                             }
-                            ts.DeleteTrain(train);
-                            ts.AddTrain(train);
+                            //ts.DeleteTrain(train);
+                            ts.ModifyTrain(train);
                         }
                     }
                 }

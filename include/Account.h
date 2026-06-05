@@ -15,8 +15,8 @@ class Account {
 public:
     std::string index_file_name = "account_index.txt";
     std::string file_name = "account.txt";
-    Database<Key20,long long,50,50> account_db;// username->User所有信息
-    Database<Key20,Order,50,50> order_db;// username->这个user的所有订单
+    Database<Key20,long long,40,40> account_db;// username->User所有信息
+    Database<Key20,Order,40,40> order_db;// username->这个user的所有订单
     //Database<Key20,Order,50,50> train_order_db;// trainID->这个train的所有pending订单
     MemoryRiver<User> user_mr;
     // MemoryRiver<Order> order_mr;
@@ -61,6 +61,10 @@ public:
     void DeleteUser(User &user) {
         long long idx = account_db.GetData(user.username);
         account_db.Delete(Key20(user.username),idx);
+    }
+    void ModifyUser(User &user) {
+        long long idx = account_db.GetData(user.username);
+        user_mr.update(user,idx);
     }
     void AddUserOrder(Order &order) {
         order_db.Insert(Key20(order.username),order);

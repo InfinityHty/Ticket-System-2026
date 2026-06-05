@@ -68,7 +68,7 @@ public:
         }
     }
 private:
-    Database<TicketKey,Key20,50,50> ticket_db;// 起终点信息->trainID
-    Database<Key40,Key20,50,50> station_db;// 经过某一站->trainID
+    Database<TicketKey,Key20,40,40> ticket_db;// 起终点信息->trainID
+    Database<Key40,Key20,40,40> station_db;// 经过某一站->trainID
 };
 #endif //TICKET_SYSTEM_2026_TICKETMANAGEMENT_H
