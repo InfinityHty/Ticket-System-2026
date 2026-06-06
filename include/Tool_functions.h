@@ -173,6 +173,15 @@ inline int GetInterval(const Train::Date &d1, const Train::Time &t1, const Train
     else if (d1.month == 8 && d2.month == 9) {
         ans += (d2.day + 31 - d1.day) * 24 * 60;
     }
+    else if (d1.month == 6 && d2.month == 8) {
+        ans += (d2.day + 31 + 30) * 24 * 60;
+    }
+    else if (d1.month == 6 && d2.month == 9) {
+        ans += (d2.day + 31 + 31 + 30) * 24 * 60;
+    }
+    else if (d1.month == 7 && d2.month == 9) {
+        ans += (d2.day + 31 + 31) * 24 * 60;
+    }
     ans += (60 * (t2.hour - t1.hour));
     ans += (t2.minute - t1.minute);
     return ans;

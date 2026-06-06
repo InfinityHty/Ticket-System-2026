@@ -30,12 +30,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code" beforeDir="false" afterPath="$PROJECT_DIR$/code" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/BPT_Database.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/BPT_Database.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Keys.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Keys.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Ticket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Ticket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/TicketManagement.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/TicketManagement.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Tool_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Tool_functions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Train.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Train.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bpt_storage_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/bpt_storage_test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bpt_storage_test" beforeDir="false" afterPath="$PROJECT_DIR$/src/bpt_storage_test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,13 +61,14 @@
     &quot;assignee&quot;: &quot;InfinityHty&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/InfinityHty/Ticket-System-2026.git&quot;,
-    &quot;accountId&quot;: &quot;e1a1a3a6-31d0-4263-af44-783282e72854&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:InfinityHty/Ticket-System-2026.git",
+    "accountId": "e1a1a3a6-31d0-4263-af44-783282e72854"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:////wsl.localhost/Ubuntu/home/hty/Ticket-System-2026/include/BPT_Database.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:////wsl.localhost/Ubuntu/home/hty/Ticket-System-2026/src/main.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:////wsl.localhost/Ubuntu/home/hty/Ticket-System-2026/src/main.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:////wsl.localhost/Ubuntu/home/hty/Ticket-System-2026/src/main.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -90,39 +89,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ File.bpt_storage_test.cpp (1).executor": "Run",
-    "C/C++ File.bpt_storage_test.cpp.executor": "Run",
-    "C/C++ File.code.executor": "Run",
-    "C/C++ File.main.cpp (1).executor": "Run",
-    "C/C++ File.main.cpp.executor": "Run",
-    "C/C++ File.oj_submit.cpp.executor": "Run",
-    "CMake Application.code.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Node.js.config.gen.js.executor": "Run",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\HTY\\AppData\\Roaming\\JetBrains\\CLion2025.2\\plugins\\Shell Script\\shellcheck.exe",
-    "Shell Script.run-test.executor": "Run",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/hty/Ticket-System-2026",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "two.files.diff.last.used.file": "D:/SJTU/大一下学期/Data_Structure/Ticket-System-2026/testcase/1867/95.out",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ File.bpt_storage_test.cpp (1).executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ File.bpt_storage_test.cpp.executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ File.code.executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ File.main.cpp (1).executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ File.main.cpp.executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ File.oj_submit.cpp.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.code.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.config.gen.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\HTY\\AppData\\Roaming\\JetBrains\\CLion2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;Shell Script.run-test.executor&quot;: &quot;Run&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/hty/Ticket-System-2026&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;D:/SJTU/大一下学期/Data_Structure/Ticket-System-2026/testcase/1867/65.out&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\hty\Ticket-System-2026" />
@@ -176,15 +175,6 @@
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="EXTERNAL_TOOL_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
-      <texify-external>
-        <program>PYTHONTEX</program>
-        <main-file />
-        <work-dir />
-        <envs />
-      </texify-external>
-      <method v="2" />
     </configuration>
     <configuration default="true" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
       <texify>
@@ -241,8 +231,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="C/C++ File.bpt_storage_test.cpp (1)" />
         <item itemvalue="Shell Script.run-test" />
+        <item itemvalue="C/C++ File.bpt_storage_test.cpp (1)" />
         <item itemvalue="C/C++ File.oj_submit.cpp" />
       </list>
     </recent_temporary>
@@ -270,7 +260,8 @@
       <workItem from="1780214676741" duration="1476000" />
       <workItem from="1780216922003" duration="24201000" />
       <workItem from="1780466742955" duration="37758000" />
-      <workItem from="1780581939298" duration="36772000" />
+      <workItem from="1780581939298" duration="43472000" />
+      <workItem from="1780735292361" duration="437000" />
     </task>
     <servers />
   </component>

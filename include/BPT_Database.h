@@ -7,6 +7,7 @@
 #include<fstream>
 #include<iostream>
 #include "vector.h"
+
 template<class T1,class T2,int id_block_size = 40,int block_size = 40>
 class Database {
 private:
@@ -35,7 +36,7 @@ private:
     };
     // < 比较
     bool cmp(Content &a, Content &b) {
-        if (b.index > a.index) return true;
+        if (a.index < b.index) return true;
         else if (a.index > b.index) return false;
         else return a.value < b.value;
     }
@@ -81,6 +82,7 @@ private:
                     index_file.write(reinterpret_cast<char *>(&child),sizeof(IdNode));
                 }
             }
+            //std::cerr << split.list[0].index << " " << split.list[0].value << "!\n";
             index_file.seekp(second_pos);
             index_file.write(reinterpret_cast<char *>(&split),sizeof(IdNode));
             index_file.seekp(cur_add);
@@ -105,6 +107,8 @@ private:
                 new_root.leaf = false;
                 index_file.seekp(0,std::ios::end);
                 index_file.write(reinterpret_cast<char *>(&new_root),sizeof(IdNode));
+                //index_file.seekp(0,std::ios::beg);
+                //index_file.write(reinterpret_cast<char *>(&root),sizeof(long long));
                 return;
             }
             else {
@@ -112,7 +116,7 @@ private:
                 index_file.seekg(cur.par);
                 IdNode parent;
                 index_file.read(reinterpret_cast<char *>(&parent),sizeof(IdNode));
-                int nex_target = 0;
+                int nex_target;
                 for (int i = 0; i <= parent.num; i++) {
                     if (parent.address[i] == cur_add) {
                         nex_target = i;
@@ -237,6 +241,8 @@ private:
                         merge = cur;
                     }
                     root = parent.address[0];
+                    //index_file.seekp(0,std::ios::beg);
+                    //index_file.write(reinterpret_cast<char *>(&root),sizeof(long long));
 
                     new_root.list[new_root.num] = parent.list[0];
                     for (int i = new_root.num + 1; i < new_root.num + 1 + merge.num; i++) {
@@ -367,6 +373,8 @@ public:
     }
     void Insert(T1 index,T2 value) {
         bool exist = false;
+        // index_file.open(index_file_name,std::ios::binary | std::ios::in | std::ios::out);
+        // file.open(file_name,std::ios::binary | std::ios::in | std::ios::out);
         index_file.seekg(root,std::ios::beg);
         IdNode cur;
         index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
@@ -381,13 +389,16 @@ public:
             index_file.seekp(root,std::ios::beg);
             index_file.write(reinterpret_cast<char *>(&cur),sizeof(IdNode));
             //
-            ContentNode first{},second{};
+            ContentNode first,second;
             first.nex = seq + sizeof(ContentNode);
             second.nex = -1;
             second.cont[second.body_size++] = Content(index,value);
             file.seekp(seq,std::ios::beg);
             file.write(reinterpret_cast<char *>(&first),sizeof(ContentNode));
             file.write(reinterpret_cast<char *>(&second),sizeof(ContentNode));
+
+            // index_file.close();
+            // file.close();
             return;
         }
 
@@ -427,6 +438,8 @@ public:
             }
         }
         if (exist) {
+            // index_file.close();
+            // file.close();
             return;
         }
         // 先按顺序加入到原序列
@@ -458,6 +471,7 @@ public:
                     complete = true;
                     // 取出最小的移到左边
                     Content move = tmp.cont[0];
+                    //std::cerr << move.value << " " << left.body_size << std::endl;
                     for (int i = 0; i < tmp.body_size - 1; i++) {
                         tmp.cont[i] = tmp.cont[i + 1];
                     }
@@ -525,6 +539,8 @@ public:
         // file.close();
     }
     void Delete(T1 index,T2 value) {
+        // index_file.open(index_file_name,std::ios::binary | std::ios::in | std::ios::out);
+        // file.open(file_name,std::ios::binary | std::ios::in | std::ios::out);
         IdNode cur;
         index_file.seekg(root);
         index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
@@ -563,6 +579,8 @@ public:
         }
         if (!exist) {
             // 不存在
+            // index_file.close();
+            // file.close();
             return;
         }
         // 存在 先删掉再调整
@@ -720,9 +738,13 @@ public:
                 }
             }
         }
+        // index_file.close();
+        // file.close();
     }
 
     void Find(T1 index) {
+        // index_file.open(index_file_name,std::ios::in | std::ios::binary);
+        // file.open(file_name,std::ios::in | std::ios::binary);
         IdNode cur;
         index_file.seekg(root);
         index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
@@ -762,6 +784,7 @@ public:
         // index_file.close();
         // file.close();
     }
+    //______________________________
     bool HasData() {
         // 数据库是否为空
         index_file.seekg(root);
@@ -780,6 +803,7 @@ public:
             index_file.clear();
             return false;
         }
+        if (cur.num == 0) return false;
         int target;
         while (true) {
             target = cur.num;
@@ -819,6 +843,7 @@ public:
         index_file.seekg(root);
         index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
         index_file.clear();
+        if (cur.num == 0) return T2();
         int target;
         while (true) {
             target = cur.num;
@@ -861,6 +886,7 @@ public:
         index_file.seekg(root);
         index_file.read(reinterpret_cast<char *>(&cur),sizeof(IdNode));
         index_file.clear();
+        if (cur.num == 0) return datas;
         int target;
         while (true) {
             target = cur.num;
