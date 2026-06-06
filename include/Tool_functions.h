@@ -7,8 +7,8 @@
 #include<string>
 #include "vector.h"
 #include "Train.h"
-const long long M = 2305843009213693951;
-const int p = 101;
+const long long M = 9223372036854775783LL;
+const int p = 13331;
 
 inline long long HashString(std::string &s) {
     long long hash[40];
@@ -17,15 +17,35 @@ inline long long HashString(std::string &s) {
     for (int i = 1; i < num; i++) hash[i] = (hash[i - 1] * p + s[i]) % M;
     return hash[num - 1];
 }
-inline long long HashChar(const char *s) {
-    long long hash[40];
+inline long long HashTicketKey(const TicketKey &s) {
+    long long hash[82];
     hash[0] = 0;
-    int i = 1;
-    while (s[i] != '\n') {
-        hash[i] = (hash[i - 1] * p + s[i]) % M;
-        i++;
+    for (int i = 1; i < 41; i++) {
+        hash[i] = (hash[i - 1] * p + s.start[i]) % M;
     }
-    return hash[i - 1];
+    for (int i = 41; i < 82; i++) {
+        hash[i] = (hash[i - 1] * p + s.end[i - 41]) % M;
+    }
+    return hash[81];
+}
+inline long long HashTwoChar(const char *s1,const char *s2) {
+    long long hash[82];
+    hash[0] = 0;
+    for (int i = 1; i < 41; i++) {
+        hash[i] = (hash[i - 1] * p + s1[i]) % M;
+    }
+    for (int i = 41; i < 82; i++) {
+        hash[i] = (hash[i - 1] * p + s2[i - 41]) % M;
+    }
+    return hash[81];
+}
+inline long long HashOneChar(const char *s1) {
+    long long hash[41];
+    hash[0] = 0;
+    for (int i = 1; i < 41; i++) {
+        hash[i] = (hash[i - 1] * p + s1[i]) % M;
+    }
+    return hash[40];
 }
 inline int StringToInt(const std::string &s) {
     int ans = 0;

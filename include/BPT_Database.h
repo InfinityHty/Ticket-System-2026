@@ -35,7 +35,7 @@ private:
     };
     // < 比较
     bool cmp(Content &a, Content &b) {
-        if (a.index < b.index) return true;
+        if (b.index > a.index) return true;
         else if (a.index > b.index) return false;
         else return a.value < b.value;
     }
@@ -132,7 +132,7 @@ private:
         }
         --cur.num;
 
-        if (cur_add == root && cur.num >= 1 || cur.num >= (id_block_size + 1) / 2 - 1) {
+        if ((cur_add == root && cur.num >= 1) || cur.num >= (id_block_size + 1) / 2 - 1) {
             // 直接写入即可
             index_file.seekp(cur_add);
             index_file.write(reinterpret_cast<char *>(&cur),sizeof(IdNode));
@@ -381,7 +381,7 @@ public:
             index_file.seekp(root,std::ios::beg);
             index_file.write(reinterpret_cast<char *>(&cur),sizeof(IdNode));
             //
-            ContentNode first,second;
+            ContentNode first{},second{};
             first.nex = seq + sizeof(ContentNode);
             second.nex = -1;
             second.cont[second.body_size++] = Content(index,value);

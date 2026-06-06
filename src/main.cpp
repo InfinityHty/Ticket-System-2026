@@ -260,9 +260,9 @@ int main() {
                 StringToChar20(tmp_id,i);
                 if (ts.ExistThisTrain(tmp_id)) valid = false;
                 else {
-
                     Train new_train(i,n,m,s,pp,x,t,o,d,y);
                     ts.AddTrain(new_train);
+                    // if (!ts.ExistThisTrain(new_train.trainID)) std::cout << new_train.trainID << '\n';
                     std::cout << timestamp << " " << 0 << '\n';
                 }
             }
@@ -296,14 +296,19 @@ int main() {
                         // ts.DeleteTrain(cur);
                         cur.release = true;
                         ts.ModifyTrain(cur);
-                        for (int j = 0; j < cur.stationNum; j++) {
-                            tm.AddTrainToStation(cur.stations[j],cur.trainID);
+                        for (int j = cur.stationNum - 1; j >= 0; j--) {
+                            tm.AddTrainToStation(HashOneChar(cur.stations[j]),cur.trainID);
+                            // if (!tm.ExistStation(HashOneChar(cur.stations[j]))) std::cout << 0 << '\n';
                         }
+
                         for (int j = 0; j < cur.stationNum; j++) {
                             for (int k = j + 1; k < cur.stationNum; k++) {
-                                tm.AddTicket(TicketKey(cur.stations[j],cur.stations[k]),cur.trainID);
+                                tm.AddTicket(HashTwoChar(cur.stations[j],cur.stations[k]),cur.trainID);
+                                // if (!tm.ExistStation(HashTwoChar(cur.stations[j],cur.stations[k])))
+                                //     std::cout << cur.stations[j] << " " << cur.stations[k] << '\n';
                             }
                         }
+
                         std::cout << timestamp << " " << 0 << '\n';
                     }
                 }
@@ -371,8 +376,13 @@ int main() {
                 if (prev == "-d") d = GetDate(tmp);
             }
             sjtu::vector<Key20> qual_trainID{};
-            if (tm.ExistTicket(TicketKey(s,t))) qual_trainID = tm.GetQualifiedTrains(s,t);
-            sjtu::vector<Ticket> qual_ticket;
+            char s_tmp[41],t_tmp[41];
+            StringToChar40(s_tmp,s);
+            StringToChar40(t_tmp,t);
+            if (tm.ExistTicket(HashTwoChar(s_tmp,t_tmp)))
+                qual_trainID = tm.GetQualifiedTrains(s,t);
+
+            sjtu::vector<Ticket> qual_ticket{};
             int cnt = 0;
             for (auto & it : qual_trainID) {
                 Train cur = ts.GetTrain(it.cont);
@@ -388,13 +398,13 @@ int main() {
                     int ed = 0;
                     Train::Time time_ar = tmp_time0;
                     Train::Date day_ar = d;
-                    int dur = 0;
+                    long long dur = 0;
                     int day_id = GetIntervalDays(tmp_date0,d);
                     dur += cur.travelTimes[st];
                     ComputeDateAndTime(day_ar,time_ar,cur.travelTimes[st]);
                     ed = st + 1;
                     int min_seat = cur.remainTickets[day_id][st];
-                    int total_price = cur.prices[st];
+                    long long total_price = cur.prices[st];
                     while (cur.stations[ed] != t) {
                         min_seat = std::min(min_seat,cur.remainTickets[day_id][ed]);
                         total_price += cur.prices[ed];
@@ -431,15 +441,16 @@ int main() {
                 if (prev == "-p") pp = tmp;
                 if (prev == "-d") d = GetDate(tmp);
             }
-            char tmp_station[41];
+            char tmp_station1[41];// tmp_station2[41];
             bool can_transfer = false;
             Ticket best_ticket1,best_ticket2;
-            int best_price = 1e9 + 5;
-            int best_dur = 1e9 + 5;
-            StringToChar40(tmp_station,s);
+            long long best_price = 1e18 + 5;
+            long long best_dur = 1e18 + 5;
+            StringToChar40(tmp_station1,s);
+            // StringToChar40(tmp_station2,t);
             sjtu::vector<Key20> qual_trainID{};
-            if (tm.ExistStation(tmp_station))
-                qual_trainID = tm.GetTrainsFromHere(tmp_station);
+            if (tm.ExistStation(HashOneChar(tmp_station1)))
+                qual_trainID = tm.GetTrainsFromHere(HashOneChar(tmp_station1));
             for (auto it : qual_trainID) {
                 Train train1 = ts.GetTrain(it.cont);
                 int st1 = 0;
@@ -454,16 +465,22 @@ int main() {
                     Train::Date date = d;
                     Train::Time time = tmp_time0;
                     int day_id1 = GetIntervalDays(tmp_date0,d);
-                    int dur1 = train1.travelTimes[st1];
-                    int price1 = train1.prices[st1];
+                    long long dur1 = train1.travelTimes[st1];
+                    long long price1 = train1.prices[st1];
                     int min_seat1 = train1.remainTickets[day_id1][st1];
                     ComputeDateAndTime(date,time,train1.travelTimes[st1]);
+                    // if (timestamp == "[3159541]") {
+                    //     break;
+                    // }
                     for (int mid = st1 + 1; mid < train1.stationNum; mid++) {
                         // 查询mid到t的车票
                         Ticket ticket1(it.cont,train1.stations[st1],train1.stations[mid],d,tmp_time0,date,time,dur1,price1,min_seat1);
                         sjtu::vector<Key20> ticket2_trainID{};
-                        if (tm.ExistTicket(TicketKey(std::string(train1.stations[mid]),t)))
+                        char tmp_t[41];
+                        StringToChar40(tmp_t,t);
+                        if (tm.ExistTicket(HashTwoChar(train1.stations[mid],tmp_t)))
                             ticket2_trainID = tm.GetQualifiedTrains(std::string(train1.stations[mid]),t);
+
                         // 把ticket2_trainID遍历一遍，找到符合要求的ticket2，计算1+2的组合 存到一个变量里,每次比较取最优
                         for (auto it2 : ticket2_trainID) {
                             // 不能同一辆车
@@ -471,16 +488,18 @@ int main() {
                             Train train2 = ts.GetTrain(it2.cont);
                             int st2 = 0;
                             Train::Date tmp_date2 = train2.saleDate[0], tmp_date3 = train2.saleDate[1];
+
                             Train::Time tmp_time2 = train2.startTime, tmp_time3 = train2.startTime;
                             while (train2.stations[st2] != std::string(train1.stations[mid])) {
                                 ComputeDateAndTime(tmp_date2,tmp_time2,train2.travelTimes[st2] + train2.stopoverTimes[st2]);
                                 ComputeDateAndTime(tmp_date3,tmp_time3,train2.travelTimes[st2] + train2.stopoverTimes[st2]);
                                 st2++;
                             }
+
                             if (TimeCompare(tmp_date3,tmp_time3,ticket1.date[1],ticket1.time[1])) continue;
                             else {
                                 // can_transfer = true;
-                                int gap_dur;
+                                long long gap_dur = 0;
                                 Train::Date date2,date2_0;
                                 Train::Time time2,time2_0;
                                 if (TimeCompare(ticket1.date[1],ticket1.time[1],tmp_date2,tmp_time2)) {
@@ -496,8 +515,8 @@ int main() {
                                     time2_0 = time2 = tmp_time2;
                                 }
                                 gap_dur = GetInterval(ticket1.date[1],ticket1.time[1],date2,time2);
-                                int dur2 = train2.travelTimes[st2];
-                                int price2 = train2.prices[st2];
+                                long long dur2 = train2.travelTimes[st2];
+                                long long price2 = train2.prices[st2];
                                 int day_id2 = GetIntervalDays(tmp_date2,date2);
                                 int min_seat2 = train2.remainTickets[day_id2][st2];
                                 ComputeDateAndTime(date2,time2,train2.travelTimes[st2]);
@@ -509,9 +528,10 @@ int main() {
                                     ComputeDateAndTime(date2,time2,train2.travelTimes[ed2] + train2.stopoverTimes[ed2 - 1]);
                                     ed2++;
                                 }
+
                                 Ticket ticket2(train2.trainID,train1.stations[mid],train2.stations[ed2],date2_0,time2_0,date2,time2,dur2,price2,min_seat2);
-                                int dur = dur1 + gap_dur + dur2;
-                                int total_price = price1 + price2;
+                                long long dur = dur1 + gap_dur + dur2;
+                                long long total_price = price1 + price2;
                                 if (!can_transfer) {
                                     best_ticket1 = ticket1;
                                     best_ticket2 = ticket2;
@@ -537,7 +557,7 @@ int main() {
                                         best_ticket2 = ticket2;
                                         best_price = total_price;
                                         best_dur = dur;
-                                        }
+                                    }
                                 }
                             }
                         }
@@ -549,9 +569,11 @@ int main() {
                     }
                 }
             }
+
             if (!can_transfer) std::cout << timestamp << " " << 0 << '\n';
             else {
                 // 输出换乘信息
+                // if (timestamp == " [1871885]") std::cout << best_dur << " " << best_price << '\n';
                 std::cout << timestamp << " " << best_ticket1 << '\n';
                 std::cout << best_ticket2 << '\n';
             }
@@ -603,9 +625,9 @@ int main() {
                         if (st < cur_train.stationNum - 1 && tmp_date0 <= d && d <= tmp_date1) {
                             Train::Date date = d;
                             Train::Time time = tmp_time0;
-                            int dur = 0;
+                            long long dur = 0;
                             int day_id = GetIntervalDays(tmp_date0,d);
-                            int price = cur_train.prices[st];
+                            long long price = cur_train.prices[st];
                             int min_seat = cur_train.remainTickets[day_id][st];
                             int ed = st + 1;
                             dur += cur_train.travelTimes[st];
@@ -661,9 +683,8 @@ int main() {
             else {
                 sjtu::vector<Order> orders{};
                 if (ac.ExistThisUserOrder(cur.username)) orders = ac.GetAllUserOrders(cur.username);
-                int size_ = orders.size();
-                std::cout << timestamp << " " << size_ << '\n';
-                for (int i = size_ - 1; i >= 0; i--) {
+                std::cout << timestamp << " " << orders.size() << '\n';
+                for (int i = orders.size() - 1; i >= 0; i--) {
                     std::cout << orders[i] << '\n';
                 }
             }

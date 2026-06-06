@@ -71,6 +71,7 @@ int main(){
             std::cin >> name >> value;
             std::cout << db.HasData() << " " << db.Exist(Key(name)) << '\n';
             db.Insert(Key(name),value);
+            std::cout << db.HasData() << " " << db.Exist(Key(name)) << '\n';
         }
         if (op == "delete") {
             std::cin >> name >> value;

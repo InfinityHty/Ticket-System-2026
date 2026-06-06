@@ -15,12 +15,12 @@ public:
     char end[41];
     Train::Date date[2];
     Train::Time time[2];
-    int duration;
-    int price;
+    long long duration;
+    long long price;
     int seat;
     Ticket(){}
     Ticket(const char *train_id, const char *st_, const char *ed_, Train::Date &d0,
-        Train::Time &t0, Train::Date &d1, Train::Time &t1, int &dur, int &price_,int &seat_) {
+        Train::Time &t0, Train::Date &d1, Train::Time &t1, long long &dur, long long &price_,int &seat_) {
         for (int i = 0; i <= 20; i++) trainID[i] = train_id[i];
         for (int i = 0; i <= 40; i++) start[i] = st_[i],end[i] = ed_[i];
         date[0] = d0;
