@@ -10,7 +10,6 @@
 class Order {
 public:
     char username[21];
-    // char trainID[21];
     int timestamp;
     enum Status{success,pending,refunded};
     Status status;
@@ -19,7 +18,6 @@ public:
     Order(){}
     Order(const char *username_,int timestamp_,Status status_,Ticket &ticket_,int num) {
         for (int i = 0; i <= 20; i++) username[i] = username_[i];
-        // for (int i = 0; i <= 20; i++) trainID[i] = trainID_[i];
         timestamp = timestamp_;
         status = status_;
         ticket = ticket_;

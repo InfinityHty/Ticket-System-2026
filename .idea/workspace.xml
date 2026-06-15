@@ -28,13 +28,17 @@
   <component name="ChangeListManager">
     <list default="true" id="46bde112-6358-4957-9df9-9c0603264431" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_design.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code" beforeDir="false" afterPath="$PROJECT_DIR$/code" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/BPT_Database.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/BPT_Database.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Tool_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Tool_functions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bpt_storage_test" beforeDir="false" afterPath="$PROJECT_DIR$/src/bpt_storage_test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Order.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Order.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oj_submit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/oj_submit.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bpt_storage_test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/50.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/53.out" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +65,12 @@
     &quot;assignee&quot;: &quot;InfinityHty&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:InfinityHty/Ticket-System-2026.git",
-    "accountId": "e1a1a3a6-31d0-4263-af44-783282e72854"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:InfinityHty/Ticket-System-2026.git&quot;,
+    &quot;accountId&quot;: &quot;e1a1a3a6-31d0-4263-af44-783282e72854&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:////wsl.localhost/Ubuntu/home/hty/Ticket-System-2026/include/BPT_Database.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:////wsl.localhost/Ubuntu/home/hty/Ticket-System-2026/src/main.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -129,6 +133,7 @@
       <recent name="D:\SJTU\大一下学期\Data_Structure\Ticket-System-2026" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\hty\Ticket-System-2026\src" />
       <recent name="D:\SJTU\大一下学期\Data_Structure\Ticket-System-2026\src" />
     </key>
   </component>
@@ -175,29 +180,6 @@
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
-      <texify>
-        <compiler>PDFLATEX</compiler>
-        <compiler-path />
-        <pdf-viewer>none</pdf-viewer>
-        <require-focus>true</require-focus>
-        <viewer-command />
-        <compiler-arguments />
-        <envs />
-        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
-        <before-run-command />
-        <main-file />
-        <output-path>{projectDir}/out</output-path>
-        <auxil-path>{projectDir}/auxil</auxil-path>
-        <compile-twice>false</compile-twice>
-        <output-format>PDF</output-format>
-        <latex-distribution>TEXLIVE</latex-distribution>
-        <has-been-run>false</has-been-run>
-        <bib-run-config>[]</bib-run-config>
-        <makeindex-run-config>[]</makeindex-run-config>
-      </texify>
-      <method v="2" />
     </configuration>
     <configuration default="true" type="MAKEINDEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
       <texify-makeindex>
@@ -261,7 +243,8 @@
       <workItem from="1780216922003" duration="24201000" />
       <workItem from="1780466742955" duration="37758000" />
       <workItem from="1780581939298" duration="43472000" />
-      <workItem from="1780735292361" duration="437000" />
+      <workItem from="1780735292361" duration="2905000" />
+      <workItem from="1781520950950" duration="3492000" />
     </task>
     <servers />
   </component>
@@ -272,21 +255,5 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/TicketManagement.h</url>
-          <line>31</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/TicketManagement.h</url>
-          <line>40</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

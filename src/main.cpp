@@ -298,14 +298,11 @@ int main() {
                         ts.ModifyTrain(cur);
                         for (int j = cur.stationNum - 1; j >= 0; j--) {
                             tm.AddTrainToStation(HashOneChar(cur.stations[j]),cur.trainID);
-                            // if (!tm.ExistStation(HashOneChar(cur.stations[j]))) std::cout << cur.stations[j] << '\n';
                         }
 
                         for (int j = 0; j < cur.stationNum; j++) {
                             for (int k = j + 1; k < cur.stationNum; k++) {
                                 tm.AddTicket(HashTwoChar(cur.stations[j],cur.stations[k]),cur.trainID);
-                                //if (!tm.ExistStation(HashTwoChar(cur.stations[j],cur.stations[k])))
-                                     //std::cout << cur.stations[j] << " " << cur.stations[k] << '\n';
                             }
                         }
 
@@ -514,7 +511,6 @@ int main() {
                                     time2_0 = time2 = tmp_time2;
                                 }
                                 gap_dur = GetInterval(ticket1.date[1],ticket1.time[1],date2,time2);
-                                //if (timestamp == "[1871885]") std::cout << ticket1.date[1] << " " << ticket1.time[1] << " " << gap_dur << " " << date2 << " " << time2 << '\n';
                                 long long dur2 = train2.travelTimes[st2];
                                 long long price2 = train2.prices[st2];
                                 int day_id2 = GetIntervalDays(tmp_date2,date2);
@@ -574,7 +570,6 @@ int main() {
             if (!can_transfer) std::cout << timestamp << " " << 0 << '\n';
             else {
                 // 输出换乘信息
-                //if (timestamp == "[1871885]") std::cout << best_dur << " " << best_price << '\n';
                 std::cout << timestamp << " " << best_ticket1 << '\n';
                 std::cout << best_ticket2 << '\n';
             }
